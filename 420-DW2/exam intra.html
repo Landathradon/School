@@ -1,0 +1,35 @@
+<html>
+<head>
+	<script type="text/javascript">
+        function affiche() {
+            let nom = document.getElementById("nom").value
+            let note = document.getElementById("note").value
+            let noteObtenue;
+
+            if (note >= 60 && note <= 69){
+                noteObtenue = "D"
+            } else if (note >= 70 && note <= 79){
+                noteObtenue = "C"
+            } else if (note >= 80 && note <= 89){
+                noteObtenue = "B"
+            } else if (note >= 90 && note <= 100){
+                noteObtenue = "A"
+            } else {
+                noteObtenue = "Echec"
+	        }
+
+            alert(`${nom} vous avez obtenu un ${noteObtenue}`);
+        }
+	</script>
+</head>
+<body>
+<form onsubmit="affiche()">
+	<label for="nom">Entrez votre nom:</label>
+	<input id="nom" name="nom" required="required" type="text"><br>
+	<label for="note">Entrez la note:</label>
+	<input id="note" name="note" pattern="^([0-9]|[1-8][0-9]|9[0-9]|100)$" placeholder="Entre 0-100" required="required"
+	       type="text"><br>
+	<input type="submit" value="Envoyer">
+</form>
+</body>
+</html>

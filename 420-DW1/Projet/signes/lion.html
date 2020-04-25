@@ -1,0 +1,208 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Astrologie Orion - Lion</title>
+	<!--Bootstrap + Jquery	-->
+	<script crossorigin="anonymous"
+	        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script crossorigin="anonymous"
+	        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+	<script crossorigin="anonymous"
+	        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+	<!--Mes Scripts	-->
+	<link href="../images/icon.png" rel="shortcut icon"/>
+	<link href="../styles/style.css" rel="stylesheet">
+	<script src="../scripts/script.js" type="text/javascript"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Astrologie Orion</a>
+	<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+	        class="navbar-toggler"
+	        data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Acceuil <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="astrologie.html">Astrologie</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+				   href="#"
+				   id="navbarDropdown" role="button">
+					Signes Astrologiques
+				</a>
+				<div aria-labelledby="navbarDropdown" class="dropdown-menu bg-primary text-light">
+					<a class="dropdown-item" href="signes/listesignes.html">Liste des signes</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="signes/belier.html">Bélier (21 mars – 19 avril)</a>
+					<a class="dropdown-item" href="signes/taureau.html">Taureau (20 avril – 20 mai)</a>
+					<a class="dropdown-item" href="signes/gemeaux.html">Gémeaux (21 mai – 20 juin)</a>
+					<a class="dropdown-item" href="signes/cancer.html">Cancer (21 juin – 22 juillet)</a>
+					<a class="dropdown-item active" href="signes/lion.html">Lion (23 juillet – 22 août)</a>
+					<a class="dropdown-item" href="signes/vierge.html">Vierge (23 août – 22 sept)</a>
+					<a class="dropdown-item" href="signes/balance.html">Balance (23 sept - 22 oct.)</a>
+					<a class="dropdown-item" href="signes/scorpion.html">Scorpion (23 oct. - 21 nov.)</a>
+					<a class="dropdown-item" href="signes/sagittaire.html">Sagittaire (22 nov. - 21 dec)</a>
+					<a class="dropdown-item" href="signes/capricorne.html">Capricorne (22 dec – 19 jan)</a>
+					<a class="dropdown-item" href="signes/verseau.html">Verseau (20 jan – 18 fév.)</a>
+					<a class="dropdown-item" href="signes/poissons.html">Poissons (19 fév. – 20 mars)</a>
+				</div>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0" method="post">
+			<input class="form-control" id="datepicker" name="date" placeholder="Date de naissance" width="276"/>
+			<button class="btn btn-outline-primary my-2 my-sm-0" id="datepickerBtn">Recherche</button>
+		</form>
+	</div>
+</nav>
+
+<div class="container" id="content">
+	<div class="row bg-dark text-light hidden" id="user-info">
+		<h6>Voici de l'information selon ce que vous aviez saisis</h6>
+		<ul>
+			<li>Prénom: <span id="search_name"></span></li>
+			<li>Nom: <span id="search_lastname"></span></li>
+			<li>Date de naissance: <span id="search_date"></span></li>
+			<li>Signe du zodiaque: <span id="search_sign"></span></li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-sm-4" id="info-box">
+			<table class="table bg-dark text-light">
+				<tr>
+					<td colspan="2"><img src="../images/lion.png"></td>
+				</tr>
+				<tr>
+					<td class="textCenter" colspan="2">23 juillet – 22 août</td>
+				</tr>
+				<tr>
+					<td>Signe:</td>
+					<td>Lion</td>
+				</tr>
+				<tr>
+					<td>Élément:</td>
+					<td>Feu</td>
+				</tr>
+				<tr>
+					<td>Mode:</td>
+					<td>Fixe</td>
+				</tr>
+				<tr>
+					<td>Positive:</td>
+					<td>Intègre</td>
+				</tr>
+				<tr>
+					<td>Négative:</td>
+					<td>Autoritaire /
+					    orgueil
+					</td>
+				</tr>
+				<tr>
+					<td>Planète Maître du signe:</td>
+					<td>Soleil</td>
+				</tr>
+			</table>
+			<div style="margin-top:15px;">
+				<table class="table bg-dark text-light">
+					<tr>
+						<td class="textCenter" colspan="2">Traits des signes</td>
+					</tr>
+					<tr>
+						<td>Descriptif:</td>
+						<td>Pouvoir</td>
+					</tr>
+					<tr>
+						<td>Traits positifs:</td>
+						<td>Flamboyant, audacieux,
+						    débrouillard, innovant,
+						    généreux.
+						</td>
+					</tr>
+					<tr>
+						<td>Traits négatifs:</td>
+						<td>Arrogant, cherche le
+						    pouvoir, orgueil, autoritaire,
+						    narcissique
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-sm bg-dark text-light" id="horoscope">
+			<h3 class="textCenter">Lion</h3>
+			<hr>
+			<div class="info-Text">
+				<h4>Votre vie amoureuse</h4>
+				<p>
+					C'est une journée idéale si vous avez des choses à dire pour améliorer votre quotidien. En effet, le
+					Soleil en harmonique avec votre signe, vous rend plus à même de vous exprimer de façon tempérée et
+					donc efficace. Côté coeur, et si vous êtes en couple, vous aborderez tous les sujets qui vous
+					chiffonnent avec beaucoup d'empathie, ce qui vous permettra d'avancer considérablement dans votre
+					relation. Les célibataires seront sans doute contactés par une ancienne relation. Et si vous vous
+					étiez trompé(e) ?
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre vie professionnelle</h4>
+				<p>
+					Si vous faites partie de celles et ceux qui travaillent, ce dimanche, vous saurez parfaitement
+					exprimer vos doléances. Pour la plupart d'entre vous, elles seront entendues. Certes, tout ne se
+					fera pas dans l'instant, mais on vous fera un certain nombre de promesses qui vous rassureront et
+					qui vous permettront de patienter.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Vos finances</h4>
+				<p>
+					Une journée plutôt calme sur le plan financier. Vous attendez avec un peu plus de patience qu'à
+					votre habitude une réponse à une demande d'aides ou autres. Elle ne saurait tarder. Mais, ce
+					dimanche, votre priorité est ailleurs. Vous avez plus envie de profiter du calme et de cette
+					motivation retrouvés.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre bien-être</h4>
+				<p>
+					Vous voilà en meilleure forme, ami(e)s Lions. Cette harmonique du Soleil avec votre signe vous
+					insuffle une énergie nouvelle qui rebooste votre moral et qui par voie de conséquence vous fait
+					oublier vos petits maux chroniques. Une bonne journée pour prendre la décision
+					de vous reprendre en main, si vous avez fait quelques excès dernièrement.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Famille et entourage</h4>
+				<p>
+					Si vous avez des enfants, vous serez très attentif(ve) à leur comportement. Vous saurez percevoir
+					leurs peurs ou leurs angoisses. Et vous trouverez les bons mots pour les rassurer. Si vous avez de
+					la famille lointaine, c'est aussi une bonne journée pour prendre des nouvelles. Votre belle humeur
+					du jour les rassurera.
+				</p>
+			</div>
+			<hr>
+			<p class="bottom">Pour plus d'information, visitez <a
+					href="https://www.evozen.fr/horoscope/horoscope-du-jour/lion">ce lien</a></p>
+		</div>
+	</div>
+</div>
+
+<footer class="footer bg-dark text-light">
+	<a href="../contact.html">Contacter le propriétaire</a><br>
+	<copyr>&copy; 2020-<span id="curYear"></span>, Astrologie Orion</copyr>
+	<br>
+	Dernière mise à jour: <span id="curDate"></span>
+</footer>
+</body>
+</html>

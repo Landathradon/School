@@ -1,0 +1,211 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Astrologie Orion - Vierge</title>
+	<!--Bootstrap + Jquery	-->
+	<script crossorigin="anonymous"
+	        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script crossorigin="anonymous"
+	        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+	<script crossorigin="anonymous"
+	        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+	<!--Mes Scripts	-->
+	<link href="../images/icon.png" rel="shortcut icon"/>
+	<link href="../styles/style.css" rel="stylesheet">
+	<script src="../scripts/script.js" type="text/javascript"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Astrologie Orion</a>
+	<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+	        class="navbar-toggler"
+	        data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Acceuil <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="astrologie.html">Astrologie</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+				   href="#"
+				   id="navbarDropdown" role="button">
+					Signes Astrologiques
+				</a>
+				<div aria-labelledby="navbarDropdown" class="dropdown-menu bg-primary text-light">
+					<a class="dropdown-item" href="signes/listesignes.html">Liste des signes</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="signes/belier.html">Bélier (21 mars – 19 avril)</a>
+					<a class="dropdown-item" href="signes/taureau.html">Taureau (20 avril – 20 mai)</a>
+					<a class="dropdown-item" href="signes/gemeaux.html">Gémeaux (21 mai – 20 juin)</a>
+					<a class="dropdown-item" href="signes/cancer.html">Cancer (21 juin – 22 juillet)</a>
+					<a class="dropdown-item" href="signes/lion.html">Lion (23 juillet – 22 août)</a>
+					<a class="dropdown-item active" href="signes/vierge.html">Vierge (23 août – 22 sept)</a>
+					<a class="dropdown-item" href="signes/balance.html">Balance (23 sept - 22 oct.)</a>
+					<a class="dropdown-item" href="signes/scorpion.html">Scorpion (23 oct. - 21 nov.)</a>
+					<a class="dropdown-item" href="signes/sagittaire.html">Sagittaire (22 nov. - 21 dec)</a>
+					<a class="dropdown-item" href="signes/capricorne.html">Capricorne (22 dec – 19 jan)</a>
+					<a class="dropdown-item" href="signes/verseau.html">Verseau (20 jan – 18 fév.)</a>
+					<a class="dropdown-item" href="signes/poissons.html">Poissons (19 fév. – 20 mars)</a>
+				</div>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0" method="post">
+			<input class="form-control" id="datepicker" name="date" placeholder="Date de naissance" width="276"/>
+			<button class="btn btn-outline-primary my-2 my-sm-0" id="datepickerBtn">Recherche</button>
+		</form>
+	</div>
+</nav>
+
+<div class="container" id="content">
+	<div class="row bg-dark text-light hidden" id="user-info">
+		<h6>Voici de l'information selon ce que vous aviez saisis</h6>
+		<ul>
+			<li>Prénom:</li>
+			<li>Nom:</li>
+			<li>Date de naissance:</li>
+			<li>Signe du zodiaque:</li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-sm-4" id="info-box">
+			<table class="table bg-dark text-light">
+				<tr>
+					<td colspan="2"><img src="../images/vierge.png"></td>
+				</tr>
+				<tr>
+					<td class="textCenter" colspan="2">23 août – 22 sept</td>
+				</tr>
+				<tr>
+					<td>Signe:</td>
+					<td>Vierge</td>
+				</tr>
+				<tr>
+					<td>Élément:</td>
+					<td>Terre</td>
+				</tr>
+				<tr>
+					<td>Mode:</td>
+					<td>Mutable</td>
+				</tr>
+				<tr>
+					<td>Positive:</td>
+					<td>Discipliné /
+					    logique /
+					    rigoureux</td>
+				</tr>
+				<tr>
+					<td>Négative:</td>
+					<td>Manque de
+					    souplesse /
+					    rancunier</td>
+				</tr>
+				<tr>
+					<td>Planète Maître du signe:</td>
+					<td>Mercure</td>
+				</tr>
+			</table>
+			<div style="margin-top:15px;">
+				<table class="table bg-dark text-light">
+					<tr>
+						<td class="textCenter" colspan="2">Traits des signes</td>
+					</tr>
+					<tr>
+						<td>Descriptif:</td>
+						<td>Critique</td>
+					</tr>
+					<tr>
+						<td>Traits positifs:</td>
+						<td>Analytique, scientifique,
+						    logique, modeste,
+						    méticuleux, méthodique,
+						    sincère, rigoureux.
+						</td>
+					</tr>
+					<tr>
+						<td>Traits négatifs:</td>
+						<td>Trop critique, cynique,
+						    méfiant, calculateur,
+						    rancunier, trop rigide, trop
+						    moraliste
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-sm bg-dark text-light" id="horoscope">
+			<h3 class="textCenter">Vierge</h3>
+			<hr>
+			<div class="info-Text">
+				<h4>Votre vie amoureuse</h4>
+				<p>
+					En ce dimanche, Neptune en harmonique avec les Vierges dirigera les regards du couple vers la même
+					direction. Vous laisserez de côté les divergences qui n'ont pas encore trouvé de solutions et vous
+					vous focaliserez plutôt sur les points d'entente. Et c'est tout naturellement que des projets à deux
+					naîtront. Vous aurez l'impression de retrouver les premiers temps de votre idylle ! Célibataire ?
+					Une personne proche pourrait en ressentir plus pour vous que ce que vous pensez.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre vie professionnelle</h4>
+				<p>
+					Les Vierges adorent les compliments, c'est pourquoi vous vous efforcez d'assurer continuellement un
+					travail de qualité. C'est encore le cas, si vous travaillez en ce dimanche. Pour ceux qui envisagent
+					de basculer dans un autre métier notamment ceux qui embrassent l'art, vous allez connaître une
+					période de transition très faste.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Vos finances</h4>
+				<p>
+					Sous cet aspect harmonique de Neptune, vous goûtez une période plus sereine sur le plan financier.
+					Aucun évènement particulier ne semble se préparer pour perturber votre quiétude en ce dimanche.
+					Toutefois, vous n'êtes jamais à l'abri d'un méchant coup du sort, c'est pourquoi, vous devez rester
+					vigilant(e) au niveau de vos comptes.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre bien-être</h4>
+				<p>
+					Pour préserver une santé de fer cette semaine et les suivantes, adoptez une discipline de vie
+					adaptée à votre physionomie. Ne vous fiez pas à l'expérience des autres, car vous n'avez pas le même
+					état de santé. Consultez plutôt des spécialistes ou du moins des personnes suffisamment formées pour
+					vous conseiller. Être en forme, c'est une chose, mais la garder en est une autre !
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Famille et entourage</h4>
+				<p>
+					Neptune efface vos peurs et vous donne accès aux rêves les plus fantaisistes. Vos proches
+					apprécieront cette sérénité psychologique clairement affichée, et ne manqueront de vous en féliciter
+					! Il semble qu'aujourd'hui, vous ayez pris la décision d'oublier toute forme de pression et de ne
+					faire que ce qui vous plaît ! Gardez le cap.
+				</p>
+			</div>
+			<hr>
+			<p class="bottom">Pour plus d'information, visitez <a
+					href="https://www.evozen.fr/horoscope/horoscope-du-jour/vierge">ce lien</a></p>
+		</div>
+	</div>
+</div>
+
+<footer class="footer bg-dark text-light">
+	<a href="../contact.html">Contacter le propriétaire</a><br>
+	<copyr>&copy; 2020-<span id="curYear"></span>, Astrologie Orion</copyr>
+	<br>
+	Dernière mise à jour: <span id="curDate"></span>
+</footer>
+</body>
+</html>

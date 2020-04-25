@@ -1,0 +1,50 @@
+<html>
+<head>
+	<title>Jeux du pendu</title>
+	<link type="text/css" rel="stylesheet" href="style.css">
+	<!-- development version, includes helpful console warnings -->
+	<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+	<div id="app">
+		<nav>
+			<button v-on:click="startGame()">Débuter le jeux</button>
+			<button v-on:click="endGame()">Quitter le jeux</button>
+			<button><a href="apropos.html">À propos</a></button>
+		</nav>
+		<div v-show="gameRunning">
+			<h3>Vous jouez au {{ message }}</h3>
+			<img v-bind:src="`images/image${tentativesErreur}.png`">
+			<p>{{ motTrouver }}</p>
+
+			<p>Votre mot contiens {{ mot.length }} lettres et vous êtres à {{ tentatives }}/{{ tentativesMax }} tentatives.</p>
+			<p v-show="checkLength()" class="important">Veuillez entrer seulement un charactère.</p>
+			<p>Vous avez présentement utiliser les lettres suivantes [<span v-for="addedLettre in lettres">{{ addedLettre.value }} </span>]</p>
+
+			<div v-show="!gameIsOver">
+				<form v-on:submit.prevent>
+					<label for="lettre">Veuillez entrer une lettre</label>
+					<input type="text" id="lettre" v-model="lettre" v-on:change="addLetters(this.lettre)">
+					<button>Entrer</button>
+				</form>
+			</div>
+			<div v-show="gameIsOver">
+				<p v-show="gameWin">Bravo! Vous avez complété le jeux! Voulez vous recommencé?</p>
+				<p class="important" v-show="!gameWin">Il ne vous reste présentement plus de tentatives. Voulez vous recommencé?</p>
+				<button v-on:click="restartGame()">Oui</button>
+				<button v-on:click="endGame()">Non</button>
+			</div>
+		</div>
+		<div v-show="!gameRunning&&!menuBool">
+			<p>Nous sommes tristes de vous voir partir.. à bientôt !</p>
+			<a href="index.html">Quitter</a>
+		</div>
+		<div v-show="menuBool">
+			<p>Bienvenue sur le {{ message }}</p>
+			<p>Veuillez cliquer sur le bouton Débuter le jeux pour commencé</p>
+		</div>
+	</div>
+
+	<script src="vue.js" type="text/javascript"></script>
+</body>
+</html>

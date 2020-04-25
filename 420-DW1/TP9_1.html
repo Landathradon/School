@@ -1,0 +1,41 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Information client</title>
+	<link href="style.css" rel="stylesheet">
+</head>
+<body>
+<h2>Information client</h2>
+<hr>
+
+<form>
+	<table>
+		<tr>
+			<td><label for="nom">Entrer votre nom:</label></td>
+			<td><input type="text" required id="nom" name="nom"/></td>
+		</tr>
+
+		<tr>
+			<td><label for="email">Entrer votre adresse courriel:</label></td>
+			<td><input type="text" required id="email" name="email"/></td>
+		</tr>
+
+		<tr>
+			<td><label for="phone">Entrer votre numéro de téléphone:</label></td>
+			<td><input type="text" required id="phone" name="phone" pattern="^[(][0-9][0-9][0-9][)][0-9][0-9][0-9][-][0-9][0-9][0-9][0-9]$" placeholder="Format: (514)123-4567"/></td>
+		</tr>
+
+		<tr>
+			<td><label for="code_postal">Entrer votre code postal:</label></td>
+			<td><input type="text" required id="code_postal" name="code_postal" pattern="[A-Za-z][0-9][A-Za-z] [0-9][A-Za-z][0-9]" placeholder="Format: A0A-0A0"/></td>
+		</tr>
+	</table>
+	<hr>
+	<div style="text-align: center;"><input type="submit" value="Soumettre le formulaire"></div>
+</form>
+
+</body>
+<footer>
+
+</footer>
+</html>

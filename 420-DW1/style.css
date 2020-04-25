@@ -1,0 +1,36 @@
+h1{
+    text-align:center;
+    font-style: italic;
+}
+h2{
+    text-align:center;
+}
+table{
+    border: 1px solid blue;
+    margin: auto;
+}
+th{
+    background-color: blue;
+    color: white;
+    border: 1px solid red;
+}
+td {
+    border: 1px solid blue;
+}
+.unit2 td{
+    background-color: lightgreen;
+    color: green;
+}
+.unit233 td{
+    background-color: lightblue;
+    color: blue;
+}
+.unit266 td{
+    background-color: rgb(230,180,180);
+    color: red;
+}
+#finEtude td{
+    background-color: cyan;
+    color: black;
+}
+

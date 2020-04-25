@@ -1,0 +1,145 @@
+body{
+    background: url("../images/background.jpg") no-repeat center center fixed;
+    color: black;
+}
+footer{
+    position: relative;
+    width: 100%;
+    height: 2.5rem;
+    padding-bottom: 75px;
+    text-align: center;
+    /*margin-top: -100px;*/
+    /*clear: both;*/
+}
+#content {
+    margin-top: 50px;
+}
+#info-box table{
+    border-radius: 7px;
+}
+#info-box img {
+    display: block;
+    margin: auto;
+}
+.textCenter{
+    text-align: center;
+}
+hr{
+    border: 1px solid white
+}
+.bottom{
+    margin-top: 15px;
+    text-align: center;
+    width: 95%;
+    bottom: 0;
+}
+.info-Text h4{
+    margin-bottom: 15px;
+    display: inline-block;
+    border-bottom: 1px solid white;
+    padding-bottom: 5px;
+}
+#horoscope {
+    margin-bottom: 50px;
+}
+
+::-webkit-scrollbar-track
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar
+{
+    width: 15px;
+    background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    background-color: #555;
+}
+.hidden{
+    display: none;
+}
+#user-info{
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
+    width: 40%;
+    border-radius: 10px;
+}
+#user-info h6{
+    text-align: right;
+    text-decoration: underline;
+}
+#user-info ul{
+    list-style: none;
+}
+#contact{
+    padding: 15px;
+    margin: 15px 0;
+}
+#news div.row {
+    margin: 15px 0;
+}
+#astrologie div{
+    margin: 10px 0;
+}
+#astrologie h4{
+    text-decoration: underline;
+}
+#nav-list{
+    list-style: none;
+    padding-top: 5px;
+}
+#nav-list h2{
+    padding: 0 5px;
+    border-right: 1px solid white;
+}
+#nav-list li{
+    margin: 0 5px;
+}
+
+/* Cards Styles */
+#horoscopeCards{
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+#horoscopeCards .row{
+    margin: 15px 0;
+}
+#horoscopeCards .card{
+    border: 3px solid #343a40;
+}
+#horoscopeCards .card hr{
+    border: 1px solid #343a40;
+}
+.fireClass{
+    background-color: #ff5a00;
+}
+.fireClass ul li{
+    background-color: #ff9a00;
+}
+.earthClass{
+    background-color: #634e24;
+}
+.earthClass ul li{
+    background-color: #28a745;
+}
+.airClass{
+    background-color: #fffbf2;
+}
+.airClass ul li{
+    background-color: #ffe7e7;
+}
+.waterClass{
+    background-color: #87bed4;
+}
+.waterClass ul li{
+    background-color: #a9d8dd;
+}
+
+/*End of Cards Styles*/

@@ -1,0 +1,212 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Astrologie Orion - Scorpion</title>
+	<!--Bootstrap + Jquery	-->
+	<script crossorigin="anonymous"
+	        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script crossorigin="anonymous"
+	        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+	<script crossorigin="anonymous"
+	        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+	<!--Mes Scripts	-->
+	<link href="../images/icon.png" rel="shortcut icon"/>
+	<link href="../styles/style.css" rel="stylesheet">
+	<script src="../scripts/script.js" type="text/javascript"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Astrologie Orion</a>
+	<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+	        class="navbar-toggler"
+	        data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Acceuil <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="astrologie.html">Astrologie</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+				   href="#"
+				   id="navbarDropdown" role="button">
+					Signes Astrologiques
+				</a>
+				<div aria-labelledby="navbarDropdown" class="dropdown-menu bg-primary text-light">
+					<a class="dropdown-item" href="signes/listesignes.html">Liste des signes</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="signes/belier.html">Bélier (21 mars – 19 avril)</a>
+					<a class="dropdown-item" href="signes/taureau.html">Taureau (20 avril – 20 mai)</a>
+					<a class="dropdown-item" href="signes/gemeaux.html">Gémeaux (21 mai – 20 juin)</a>
+					<a class="dropdown-item" href="signes/cancer.html">Cancer (21 juin – 22 juillet)</a>
+					<a class="dropdown-item" href="signes/lion.html">Lion (23 juillet – 22 août)</a>
+					<a class="dropdown-item" href="signes/vierge.html">Vierge (23 août – 22 sept)</a>
+					<a class="dropdown-item" href="signes/balance.html">Balance (23 sept - 22 oct.)</a>
+					<a class="dropdown-item active" href="signes/scorpion.html">Scorpion (23 oct. - 21 nov.)</a>
+					<a class="dropdown-item" href="signes/sagittaire.html">Sagittaire (22 nov. - 21 dec)</a>
+					<a class="dropdown-item" href="signes/capricorne.html">Capricorne (22 dec – 19 jan)</a>
+					<a class="dropdown-item" href="signes/verseau.html">Verseau (20 jan – 18 fév.)</a>
+					<a class="dropdown-item" href="signes/poissons.html">Poissons (19 fév. – 20 mars)</a>
+				</div>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0" method="post">
+			<input class="form-control" id="datepicker" name="date" placeholder="Date de naissance" width="276"/>
+			<button class="btn btn-outline-primary my-2 my-sm-0" id="datepickerBtn">Recherche</button>
+		</form>
+	</div>
+</nav>
+
+<div class="container" id="content">
+	<div class="row bg-dark text-light hidden" id="user-info">
+		<h6>Voici de l'information selon ce que vous aviez saisis</h6>
+		<ul>
+			<li>Prénom: <span id="search_name"></span></li>
+			<li>Nom: <span id="search_lastname"></span></li>
+			<li>Date de naissance: <span id="search_date"></span></li>
+			<li>Signe du zodiaque: <span id="search_sign"></span></li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-sm-4" id="info-box">
+			<table class="table bg-dark text-light">
+				<tr>
+					<td colspan="2"><img src="../images/scorpion.png"></td>
+				</tr>
+				<tr>
+					<td class="textCenter" colspan="2">23 oct. - 21 nov.</td>
+				</tr>
+				<tr>
+					<td>Signe:</td>
+					<td>Scorpion</td>
+				</tr>
+				<tr>
+					<td>Élément:</td>
+					<td>Eau</td>
+				</tr>
+				<tr>
+					<td>Mode:</td>
+					<td>Fixe</td>
+				</tr>
+				<tr>
+					<td>Positive:</td>
+					<td>Profond /
+					    généreux
+					</td>
+				</tr>
+				<tr>
+					<td>Négative:</td>
+					<td>Impitoyable /
+					    égoïste
+					</td>
+				</tr>
+				<tr>
+					<td>Planète Maître du signe:</td>
+					<td>Pluton</td>
+				</tr>
+			</table>
+			<div style="margin-top:15px;">
+				<table class="table bg-dark text-light">
+					<tr>
+						<td class="textCenter" colspan="2">Traits des signes</td>
+					</tr>
+					<tr>
+						<td>Descriptif:</td>
+						<td>Intensité</td>
+					</tr>
+					<tr>
+						<td>Traits positifs:</td>
+						<td>Déterminé, diligent,
+						    charmant, persévérant,
+						    intuitif, dévoué, profond,
+						    sens du travail, intègre
+						</td>
+					</tr>
+					<tr>
+						<td>Traits négatifs:</td>
+						<td>Manque de souplesse,
+						    orgueilleux, destructeur,
+						    menteur, désobéissant,
+						    égoïste, provocateur
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-sm bg-dark text-light" id="horoscope">
+			<h3 class="textCenter">Scorpion</h3>
+			<hr>
+			<div class="info-Text">
+				<h4>Votre vie amoureuse</h4>
+				<p>
+					Un passage à vide dans votre couple est à prévoir ce dimanche. La communication est mise à rude
+					épreuve ce qui génère incompréhensions et frustrations. Avant de faire des reproches à votre
+					partenaire, réfléchissez soigneusement à vos propres attentes. Quand celles-ci seront claires, vous
+					serez en mesure d'échanger sérieusement à ce sujet pour trouver des solutions.
+					Natifs célibataires, la conjonction n'est pas vraiment idéale pour vos amours. Si vous attendez un
+					message, il se pourrait qu'il n'arrive pas aujourd'hui.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre vie professionnelle</h4>
+				<p>
+					Si vous faites partie de celles et ceux qui travaillent, ce dimanche, vous pourriez vous retrouver
+					en porta-faux suite à des non-dits ou à des règles approximatives. Et c'est loin d'être une
+					situation agréable ! Le moyen le plus sûr de ne pas s'y empêtrer est de prendre le temps d'analyser
+					la situation inconfortable pour pouvoir en dégripper le rouage bloqué.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Vos finances</h4>
+				<p>
+					Ce n’est pas le jour idéal pour tout changer à vos habitudes financières. Mieux vaudrait, au
+					préalable, clarifier la situation actuelle pour éviter le flou artistique qui règne sur vos comptes.
+					En effet, une erreur peut arriver très vite, mais avec de la rigueur, il est plus facile de
+					l’éviter.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre bien-être</h4>
+				<p>
+					La conjonction entre la Lune et Neptune vous apporte fatigue et manque d’énergie. Pensez à écouter
+					votre corps, à vous recentrer et à vous reposer. C'est le message envoyé par la conjonction entre
+					Lune et Neptune. Ce dimanche, essayez d’éviter de céder à vos mauvaises habitudes, car vous êtes
+					particulièrement vulnérable à celles qui sont susceptibles de générer une accoutumance.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Famille et entourage</h4>
+				<p>
+					Comme vous n’êtes pas au meilleur de votre forme, vous vous sentez vulnérable et avez tendance à
+					vous refermer sur vous-même. Par conséquent, la communication avec vos proches est rendue
+					particulièrement difficile. Ne reportez pas sur eux vos craintes du moment, vous risqueriez de vous
+					faire mal ou de blesser ceux que vous aimez.
+				</p>
+			</div>
+			<hr>
+			<p class="bottom">Pour plus d'information, visitez <a
+					href="https://www.evozen.fr/horoscope/horoscope-du-jour/scorpion">ce lien</a></p>
+		</div>
+	</div>
+</div>
+
+<footer class="footer bg-dark text-light">
+	<a href="../contact.html">Contacter le propriétaire</a><br>
+	<copyr>&copy; 2020-<span id="curYear"></span>, Astrologie Orion</copyr>
+	<br>
+	Dernière mise à jour: <span id="curDate"></span>
+</footer>
+</body>
+</html>

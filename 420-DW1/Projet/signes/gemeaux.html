@@ -1,0 +1,206 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Astrologie Orion - Gémeaux</title>
+	<!--Bootstrap + Jquery	-->
+	<script crossorigin="anonymous"
+	        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script crossorigin="anonymous"
+	        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+	<script crossorigin="anonymous"
+	        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+	<!--Mes Scripts	-->
+	<link href="../images/icon.png" rel="shortcut icon"/>
+	<link href="../styles/style.css" rel="stylesheet">
+	<script src="../scripts/script.js" type="text/javascript"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Astrologie Orion</a>
+	<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+	        class="navbar-toggler"
+	        data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Acceuil <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" href="astrologie.html">Astrologie</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+				   href="#"
+				   id="navbarDropdown" role="button">
+					Signes Astrologiques
+				</a>
+				<div aria-labelledby="navbarDropdown" class="dropdown-menu bg-primary text-light">
+					<a class="dropdown-item" href="signes/listesignes.html">Liste des signes</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="signes/belier.html">Bélier (21 mars – 19 avril)</a>
+					<a class="dropdown-item" href="signes/taureau.html">Taureau (20 avril – 20 mai)</a>
+					<a class="dropdown-item active" href="signes/gemeaux.html">Gémeaux (21 mai – 20 juin)</a>
+					<a class="dropdown-item" href="signes/cancer.html">Cancer (21 juin – 22 juillet)</a>
+					<a class="dropdown-item" href="signes/lion.html">Lion (23 juillet – 22 août)</a>
+					<a class="dropdown-item" href="signes/vierge.html">Vierge (23 août – 22 sept)</a>
+					<a class="dropdown-item" href="signes/balance.html">Balance (23 sept - 22 oct.)</a>
+					<a class="dropdown-item" href="signes/scorpion.html">Scorpion (23 oct. - 21 nov.)</a>
+					<a class="dropdown-item" href="signes/sagittaire.html">Sagittaire (22 nov. - 21 dec)</a>
+					<a class="dropdown-item" href="signes/capricorne.html">Capricorne (22 dec – 19 jan)</a>
+					<a class="dropdown-item" href="signes/verseau.html">Verseau (20 jan – 18 fév.)</a>
+					<a class="dropdown-item" href="signes/poissons.html">Poissons (19 fév. – 20 mars)</a>
+				</div>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0" method="post">
+			<input class="form-control" id="datepicker" name="date" placeholder="Date de naissance" width="276"/>
+			<button class="btn btn-outline-primary my-2 my-sm-0" id="datepickerBtn">Recherche</button>
+		</form>
+	</div>
+</nav>
+
+<div class="container" id="content">
+	<div class="row bg-dark text-light hidden" id="user-info">
+		<h6>Voici de l'information selon ce que vous aviez saisis</h6>
+		<ul>
+			<li>Prénom: <span id="search_name"></span></li>
+			<li>Nom: <span id="search_lastname"></span></li>
+			<li>Date de naissance: <span id="search_date"></span></li>
+			<li>Signe du zodiaque: <span id="search_sign"></span></li>
+		</ul>
+	</div>
+	<div class="row">
+		<div class="col-sm-4" id="info-box">
+			<table class="table bg-dark text-light">
+				<tr>
+					<td colspan="2"><img src="../images/gemeaux.png"></td>
+				</tr>
+				<tr>
+					<td class="textCenter" colspan="2">21 mai – 20 juin</td>
+				</tr>
+				<tr>
+					<td>Signe:</td>
+					<td>Gémeaux</td>
+				</tr>
+				<tr>
+					<td>Élément:</td>
+					<td>Air</td>
+				</tr>
+				<tr>
+					<td>Mode:</td>
+					<td>Mutable</td>
+				</tr>
+				<tr>
+					<td>Positive:</td>
+					<td>Adaptable</td>
+				</tr>
+				<tr>
+					<td>Négative:</td>
+					<td>Superficiel(le)</td>
+				</tr>
+				<tr>
+					<td>Planète Maître du signe:</td>
+					<td>Mercure</td>
+				</tr>
+			</table>
+			<div style="margin-top:15px;">
+				<table class="table bg-dark text-light">
+					<tr>
+						<td class="textCenter" colspan="2">Traits des signes</td>
+					</tr>
+					<tr>
+						<td>Descriptif:</td>
+						<td>Communication</td>
+					</tr>
+					<tr>
+						<td>Traits positifs:</td>
+						<td>Adaptable, intellectuel,
+						    sens de l’humour,
+						    adaptable, inspiré,
+						    mobile, inventif
+						</td>
+					</tr>
+					<tr>
+						<td>Traits négatifs:</td>
+						<td>Nerveux, superficiel(le),
+						    menteur, manipulateur,
+						    impatient, moqueur,
+						    contradicteur.
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+		<div class="col-sm bg-dark text-light" id="horoscope">
+			<h3 class="textCenter">Gémeaux</h3>
+			<hr>
+			<div class="info-Text">
+				<h4>Votre vie amoureuse</h4>
+				<p>
+					Les aspects du Soleil incitent les Gémeaux à se mettre en avant et à profiter du moment présent.
+					C'est une bonne décision, il faut profiter de la soirée pour jouer de sa séduction. Cette mise en
+					relief permettra aux personnes en couple de s'affirmer et se conforter dans une relation, et aux
+					célibataires d'entamer des échanges fructueux. Quoi qu'il en soit, une certaine aisance
+					relationnelle autorise tous les espoirs. Vous captez toutes les attentions.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre vie professionnelle</h4>
+				<p>
+					Si vous faites partie de celles et ceux qui travaillent, ce dimanche, vos initiatives qui semblaient
+					bloquées ou ne devoir aboutir qu'au prix de réelles difficultés, pourraient être plus ouvertes.
+					Peut-être est-ce le moment de vous poser aussi certaines questions. Si vous avez un échange
+					professionnel pour un futur emploi, vous saurez déployer les bons arguments.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Vos finances</h4>
+				<p>
+					Conclure de nouveaux contrats est possible sous cette conjoncture astrale. N'hésitez pas à bien
+					étudier, jusqu'aux dernières petites lignes, tout ce que vous pourriez signer. Les Gémeaux espèrent
+					pouvoir obtenir de nouvelles conditions, les négociations s'offrent à eux et ils peuvent les mener à
+					bien. Le Soleil apporte beaucoup de lucidité et soutient la réflexion.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Votre bien-être</h4>
+				<p>
+					Les dissonances s'estompent et vous vous sentez soulagé(e) ce dimanche. Les signes de nervosité qui
+					se faisaient ressentir ces derniers temps sont en passe de régresser. Le Soleil Harmonique avec les
+					Gémeaux autorise à la fois une grande agilité mais aussi une grande souplesse, tant physique
+					qu'intellectuelle. C'est le meilleur moyen de s'adapter à toutes les situations.
+				</p>
+			</div>
+			<div class="info-Text">
+				<h4>Famille et entourage</h4>
+				<p>
+					Vous êtes au cœur de quelque chose de nouveau qui se met en place au sein de la famille ou du moins,
+					d'un cercle d'intimes. Les uns et les autres se sentent en harmonie et communiquent facilement. La
+					journée se passe dans une ambiance de détente qui crée une entente sereine et complice.
+				</p>
+			</div>
+			<hr>
+			<p class="bottom">Pour plus d'information, visitez <a
+					href="https://www.evozen.fr/horoscope/horoscope-du-jour/gemeaux">ce lien</a></p>
+		</div>
+	</div>
+</div>
+
+<footer class="footer bg-dark text-light">
+	<a href="../contact.html">Contacter le propriétaire</a><br>
+	<copyr>&copy; 2020-<span id="curYear"></span>, Astrologie Orion</copyr>
+	<br>
+	Dernière mise à jour: <span id="curDate"></span>
+</footer>
+</body>
+</html>

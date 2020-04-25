@@ -1,0 +1,211 @@
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Astrologie Orion</title>
+	<!--Bootstrap + Jquery	-->
+	<script crossorigin="anonymous"
+	        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+	        src="https://code.jquery.com/jquery-3.4.1.slim.min.js"></script>
+	<script crossorigin="anonymous"
+	        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+	        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+	<link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+	      integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" rel="stylesheet">
+	<script crossorigin="anonymous"
+	        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+	        src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	<script src="https://unpkg.com/gijgo@1.9.13/js/gijgo.min.js" type="text/javascript"></script>
+	<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css"/>
+	<!--Mes Scripts	-->
+	<link href="images/icon.png" rel="shortcut icon"/>
+	<link href="styles/style.css" rel="stylesheet">
+	<script src="scripts/script.js" type="text/javascript"></script>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	<a class="navbar-brand" href="#">Astrologie Orion</a>
+	<button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"
+	        class="navbar-toggler"
+	        data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+		<span class="navbar-toggler-icon"></span>
+	</button>
+
+	<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<ul class="navbar-nav mr-auto">
+			<li class="nav-item">
+				<a class="nav-link" href="index.html">Acceuil <span class="sr-only">(current)</span></a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link active" href="astrologie.html">Astrologie</a>
+			</li>
+			<li class="nav-item dropdown">
+				<a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle" data-toggle="dropdown"
+				   href="#"
+				   id="navbarDropdown" role="button">
+					Signes Astrologiques
+				</a>
+				<div aria-labelledby="navbarDropdown" class="dropdown-menu bg-primary text-light">
+					<a class="dropdown-item" href="signes/listesignes.html">Liste des signes</a>
+					<div class="dropdown-divider"></div>
+					<a class="dropdown-item" href="signes/belier.html">Bélier (21 mars – 19 avril)</a>
+					<a class="dropdown-item" href="signes/taureau.html">Taureau (20 avril – 20 mai)</a>
+					<a class="dropdown-item" href="signes/gemeaux.html">Gémeaux (21 mai – 20 juin)</a>
+					<a class="dropdown-item" href="signes/cancer.html">Cancer (21 juin – 22 juillet)</a>
+					<a class="dropdown-item" href="signes/lion.html">Lion (23 juillet – 22 août)</a>
+					<a class="dropdown-item" href="signes/vierge.html">Vierge (23 août – 22 sept)</a>
+					<a class="dropdown-item" href="signes/balance.html">Balance (23 sept - 22 oct.)</a>
+					<a class="dropdown-item" href="signes/scorpion.html">Scorpion (23 oct. - 21 nov.)</a>
+					<a class="dropdown-item" href="signes/sagittaire.html">Sagittaire (22 nov. - 21 dec)</a>
+					<a class="dropdown-item" href="signes/capricorne.html">Capricorne (22 dec – 19 jan)</a>
+					<a class="dropdown-item" href="signes/verseau.html">Verseau (20 jan – 18 fév.)</a>
+					<a class="dropdown-item" href="signes/poissons.html">Poissons (19 fév. – 20 mars)</a>
+				</div>
+			</li>
+		</ul>
+		<form class="form-inline my-2 my-lg-0" method="post">
+			<input class="form-control" id="datepicker" name="date" placeholder="Date de naissance" width="276"/>
+			<button class="btn btn-outline-primary my-2 my-sm-0" id="datepickerBtn">Recherche</button>
+		</form>
+	</div>
+</nav>
+
+<div class="container" id="news">
+	<div class="row">
+		<div class="col-md-12 bg-dark text-light">
+			<ul class="nav" id="nav-list">
+				<li><h2>Astrologie</h2></li>
+				<li class="nav-item"><a class="nav-link btn btn-primary" href="#description">Description</a></li>
+				<li class="nav-item"><a class="nav-link btn btn-primary" href="#histoire">Histoire</a></li>
+				<li class="nav-item"><a class="nav-link btn btn-primary" href="#croyances">Croyances</a></li>
+				<li class="nav-item"><a class="nav-link btn btn-primary" href="#info-science">Informations scientifiques</a></li>
+			</ul>
+			<hr>
+			<div id="astrologie">
+				<div id="description">
+					<h4>Qu'est-ce que c'est l'astrologie vous vous dites?</h4>
+					L'astrologie est une discipline regroupant un ensemble de croyances et de
+					pratiques fondées sur
+					l'interprétation symbolique des correspondances supposées entre les configurations
+					célestes (la position
+					et le mouvement des planètes du système solaire) et les affaires humaines,
+					collectives ou
+					individuelles. L'astrologie est maintenant considérée comme une pseudoscience,
+					une croyance
+					indûment présentée comme scientifique, ou comme une superstition, l'ensemble des
+					recherches menées
+					depuis l'Antiquité ayant abouti au fait que l'astrologie se place, par sa méthode
+					même, en dehors du
+					domaine rationnel ou scientifique.
+				</div>
+
+				<div id="histoire">
+					<h4>Histoire</h4>
+					L’astrologie remonte au moins au 2e millénaire avant notre ère, et a ses racines dans
+					les systèmes de
+					calendrier utilisés pour prédire les changements saisonniers et pour interpréter les
+					cycles célestes
+					comme des signes de communications divines. De nombreuses cultures ont accordé de
+					l’importance aux
+					événements astronomiques, et certaines — comme les hindous, les chinois et les mayas
+					— ont mis au point
+					des systèmes élaborés pour prévoir les événements terrestres à partir des
+					observations célestes.
+					L’astrologie occidentale, l’un des plus anciens systèmes astrologiques encore en
+					usage, peut retracer
+					ses racines en Mésopotamie du XIXe au XVIIe siècle avant notre ère, d’où elle s’est
+					propagée à la Grèce
+					antique, à Rome, au monde arabe et finalement à l’Europe centrale et occidentale.
+					L’astrologie
+					occidentale contemporaine est souvent associée à des systèmes d’horoscopes qui
+					prétendent expliquer des
+					aspects de la personnalité d’une personne et prédire des événements significatifs
+					dans leur vie en
+					fonction de la position des objets célestes.
+				</div>
+
+				<div>Tout au long de son histoire, l’astrologie a appartenu à une tradition savante et était courante
+				     dans
+				     les milieux universitaires, souvent en relation étroite avec l’astronomie, l’alchimie, la
+				     météorologie
+				     et la médecine. Elle influait sur les milieux politiques et est mentionnée dans divers ouvrages
+				     littéraires, de Dante Alighieri et Geoffrey Chaucer à William Shakespeare, Lope de Vega, et
+				     Calderón de
+				     la Barca. Après la fin du XIXème siècle et l’adoption à grande échelle de la méthode scientifique,
+				     l’astrologie a été vigoureusement contestée et critiquée tant sur ses bases théoriques et
+				     qu'expérimentales. Il fut prouvé avec succès que l'astrologie n'a absolument aucune validité
+				     scientifique.
+				</div>
+
+				<div id="croyances">
+					<h4>Croyances</h4>
+					Les croyances associées à l'astrologie sont populaires. Environ 25% des adultes aux Etats-Unis,
+					Canada
+					et Royaume-Uni prennent au sérieux l'astrologie. En France près de 47% des femmes accorderaient du
+					crédit à l'astrologie. Le biais de confirmation serait la principale raison pour laquelle autant de
+					personnes continuent de croire en l'astrologie.
+				</div>
+
+				<div>La part de personnes croyant en l'astrologie varie en fonction de l'âge, du sexe, du groupe
+				     ethnique, du
+				     positionnement politique et du niveau d'études. Ainsi, les femmes sont plus nombreuses que les
+				     hommes à
+				     prendre l'astrologie au sérieux. La part de personne croyant en l'astrologie est également plus
+				     élevée
+				     chez les Noirs et les Hispaniques que chez les Blancs. Les personnes politiquement classées à
+				     gauche
+				     sont également plus nombreuses à croire en l'astrologie que celle classée à droite. Enfin, plus le
+				     niveau d'études d'une personne est faible plus il est probable qu'elle croit en l'astrologie, par
+				     exemple une personne s'étant arrêtée au baccalauréat a 7 fois plus de chance de reconnaître un
+				     caractère
+				     très scientifique à l'astrologie par rapport à une personne ayant atteint le grade de Master.
+				</div>
+
+				<div id="info-science">
+					<h4>Information scientifiques</h4>
+					Pour l'Association française pour l'information scientifique (AFIS): Sur un plan scientifique, la
+					validité de l’astrologie a été largement mise à l’épreuve et est définitivement rejetée. Pour
+					autant,
+					toutes les nombreuses expériences déjà réalisées, tout comme celles à venir, ne suffiront pas à
+					convaincre les astrologues ou ceux qui croient en leurs prédictions. Là où les scientifiques
+					s’intéressent aux faits, les astrologues évaluent la satisfaction de leurs clients (et pour les
+					plus
+					cyniques, leur chiffre d’affaires et la fréquentation de leur cabinet).
+				</div>
+
+				<div>De nombreux travaux scientifiques ont rigoureusement démonté l'ensemble des croyances associées à
+				     l'astrologie. Ainsi, sur la relation entre personnalité des individus et date de naissance, une
+				     étude,
+				     basée sur deux échantillons de respectivement 4 000 et 15 000 personnes, publiée en 2006 et menée
+				     par
+				     Peter Hartmann du département de psychologie de l’Université de Aarhus, conclut: cette étude de
+				     grande
+				     échelle ne fournit aucun fait permettant de soutenir l’existence de relation entre la date de
+				     naissance
+				     et des différences dans la personnalité et l’intelligence générale. Des résultats similaires
+				     avaient
+				     été trouvés par les psychologues Geoffrey Dean et Ivan Kelly en 2003 sur un échantillon de 2 000
+				     personnes. D'autres études et publications ont par ailleurs démontré qu'il n'existait aucune
+				     cohérence
+				     entre ce que pouvait affirmer plusieurs astrologues à propos d'une même personne ou encore que la
+				     capacité d'un astrologue à déterminer en fonction des signes astraux si une personne était
+				     introvertie
+				     ou extravertie ne valait pas mieux que le tirage d'une pièce à pile ou face.
+				</div>
+				<div class="textCenter">
+					<hr>
+					Pour voir l'article au complet sur le wikipédia, cliquer sur <a
+						href="https://fr.wikipedia.org/wiki/Astrologie">ce lien</a>.
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<footer class="footer bg-dark text-light">
+	<a href="contact.html">Contacter le propriétaire</a><br>
+	<copyr>&copy; 2020-<span id="curYear"></span>, Astrologie Orion</copyr>
+	<br>
+	Dernière mise à jour: <span id="curDate"></span>
+</footer>
+</body>
+</html>

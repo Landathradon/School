@@ -1,0 +1,20 @@
+﻿<Window x:Class="MultiLocations.AnnulerPaiement"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:local="clr-namespace:MultiLocations"
+        mc:Ignorable="d"
+        Title="AnnulerPaiement" Height="285.053" Width="368.416" ResizeMode="NoResize">
+    <Grid>
+        <Label Content="Annuler Paiement" Margin="66,17,99,0" VerticalAlignment="Top" FontSize="20" FontWeight="Bold"/>
+        <Label Content="ID Paiement&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,83,0,0" VerticalAlignment="Top" Height="26" Width="79"/>
+        <Label Content="Montant" HorizontalAlignment="Left" Margin="10,166,0,0" VerticalAlignment="Top"/>
+        <ComboBox x:Name="IDPaiementList" HorizontalAlignment="Left" Height="24" Margin="10,114,0,0" VerticalAlignment="Top" Width="116" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" DisplayMemberPath="NoPaiement" SelectionChanged="IDPaiementList_OnChange"/>
+        <TextBox x:Name="MontantTxt" HorizontalAlignment="Left" Height="23" Margin="10,197,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" IsEnabled="False"/>
+        <Button x:Name="BtnAnnuler" Content="Annuler" HorizontalAlignment="Left" Margin="186,200,0,0" VerticalAlignment="Top" Width="75" Click="BtnAnnuler_OnClick"/>
+        <Label Content="Location" HorizontalAlignment="Left" Margin="186,83,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="IDLocationTxt" HorizontalAlignment="Left" Height="23" Margin="186,114,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="91" IsEnabled="False"/>
+
+    </Grid>
+</Window>

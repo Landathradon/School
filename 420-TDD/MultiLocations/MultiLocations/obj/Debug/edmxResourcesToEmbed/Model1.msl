@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LoanModelStoreContainer" CdmEntityContainer="LoanEntities">
+    <EntitySetMapping Name="Audits">
+      <EntityTypeMapping TypeName="LoanModel.Audit">
+        <MappingFragment StoreEntitySet="Audits">
+          <ScalarProperty Name="NoAudit" ColumnName="NoAudit" />
+          <ScalarProperty Name="DateChangement" ColumnName="DateChangement" />
+          <ScalarProperty Name="ColChangement" ColumnName="ColChangement" />
+          <ScalarProperty Name="AncienneValeur" ColumnName="AncienneValeur" />
+          <ScalarProperty Name="NouvelleValeur" ColumnName="NouvelleValeur" />
+          <ScalarProperty Name="LocationChangement" ColumnName="LocationChangement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="LoanModel.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="NoClient" ColumnName="NoClient" />
+          <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+          <ScalarProperty Name="Nom" ColumnName="Nom" />
+          <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+          <ScalarProperty Name="Ville" ColumnName="Ville" />
+          <ScalarProperty Name="Province" ColumnName="Province" />
+          <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+          <ScalarProperty Name="NumDeTelephone" ColumnName="NumDeTelephone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Couleurs">
+      <EntityTypeMapping TypeName="LoanModel.Couleur">
+        <MappingFragment StoreEntitySet="Couleurs">
+          <ScalarProperty Name="Couleur1" ColumnName="Couleur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="InfoPaiements">
+      <EntityTypeMapping TypeName="LoanModel.InfoPaiement">
+        <MappingFragment StoreEntitySet="InfoPaiement">
+          <ScalarProperty Name="NoPaiement" ColumnName="NoPaiement" />
+          <ScalarProperty Name="NoLocation" ColumnName="NoLocation" />
+          <ScalarProperty Name="Date" ColumnName="Date" />
+          <ScalarProperty Name="Montant" ColumnName="Montant" />
+          <ScalarProperty Name="LocationPaiement" ColumnName="LocationPaiement" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Locations">
+      <EntityTypeMapping TypeName="LoanModel.Location">
+        <MappingFragment StoreEntitySet="Locations">
+          <ScalarProperty Name="NoLocation" ColumnName="NoLocation" />
+          <ScalarProperty Name="DateLocation" ColumnName="DateLocation" />
+          <ScalarProperty Name="DatePaiement" ColumnName="DatePaiement" />
+          <ScalarProperty Name="MontantPaiement" ColumnName="MontantPaiement" />
+          <ScalarProperty Name="NbrPaiement" ColumnName="NbrPaiement" />
+          <ScalarProperty Name="VINVehicule" ColumnName="VINVehicule" />
+          <ScalarProperty Name="NoClient" ColumnName="NoClient" />
+          <ScalarProperty Name="TermesLocation" ColumnName="TermesLocation" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modeles">
+      <EntityTypeMapping TypeName="LoanModel.Modele">
+        <MappingFragment StoreEntitySet="Modeles">
+          <ScalarProperty Name="Modele1" ColumnName="Modele" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="LoanModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TermesDeLocations">
+      <EntityTypeMapping TypeName="LoanModel.TermesDeLocation">
+        <MappingFragment StoreEntitySet="TermesDeLocation">
+          <ScalarProperty Name="NoTerme" ColumnName="NoTerme" />
+          <ScalarProperty Name="NbrAnnees" ColumnName="NbrAnnees" />
+          <ScalarProperty Name="KiloMax" ColumnName="KiloMax" />
+          <ScalarProperty Name="Prime" ColumnName="Prime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="LoanModel.Type">
+        <MappingFragment StoreEntitySet="Types">
+          <ScalarProperty Name="Type1" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vehicles">
+      <EntityTypeMapping TypeName="LoanModel.Vehicle">
+        <MappingFragment StoreEntitySet="Vehicles">
+          <ScalarProperty Name="VINVehicule" ColumnName="VINVehicule" />
+          <ScalarProperty Name="Modele" ColumnName="Modele" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+          <ScalarProperty Name="Couleur" ColumnName="Couleur" />
+          <ScalarProperty Name="Annee" ColumnName="Annee" />
+          <ScalarProperty Name="ValeurVehicule" ColumnName="ValeurVehicule" />
+          <ScalarProperty Name="TransmissionAuto" ColumnName="TransmissionAuto" />
+          <ScalarProperty Name="AirClim" ColumnName="AirClim" />
+          <ScalarProperty Name="AntiDemarreur" ColumnName="AntiDemarreur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="CreateLeaseProcedure" FunctionName="LoanModel.Store.CreateLeaseProcedure" />
+    <FunctionImportMapping FunctionImportName="InsertPaiementsProcedure" FunctionName="LoanModel.Store.InsertPaiementsProcedure" />
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LoanModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LoanModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="LoanModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="LoanModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LoanModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="LoanModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LoanModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LoanModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LoanModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

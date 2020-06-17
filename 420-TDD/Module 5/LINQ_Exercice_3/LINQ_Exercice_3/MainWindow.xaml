@@ -1,0 +1,47 @@
+﻿<Window x:Class="LINQ_Exercice_3.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LINQ_Exercice_3"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="600" HorizontalAlignment="Left" WindowStartupLocation="CenterScreen" ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="20" />
+            <ColumnDefinition Width="1.5*" />
+            <ColumnDefinition Width="20" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Label Content="Liste de nombres :" Grid.Row="1" Grid.Column="1" FontFamily="Times New Roman" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="Liste" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center" FontFamily="Times New Roman" />
+        <Button x:Name="afficherListe" Margin="5" Content="Afficher liste" Grid.Row="1" Grid.Column="4" FontFamily="Times New Roman" Click="afficherListe_Click" />
+        <Label Content="Plus petit nombre :" Grid.Row="2" Grid.Column="1" FontFamily="Times New Roman" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="petitNombre" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center" FontFamily="Times New Roman" />
+        <Button x:Name="afficherPetit" Margin="5" Content="Afficher plus petit" Grid.Row="2" Grid.Column="4" FontFamily="Times New Roman" Click="afficherPetit_Click" />
+        <Label Content="Plus grand nombre :" Grid.Row="3" Grid.Column="1" FontFamily="Times New Roman" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="grandNombre" Grid.Row="3" Grid.Column="2" VerticalAlignment="Center" FontFamily="Times New Roman" />
+        <Button x:Name="afficherGrand" Margin="5" Content="Afficher plus grand" Grid.Row="3" Grid.Column="4" FontFamily="Times New Roman" Click="afficherGrand_Click" />
+        <Label Content="Somme des nombres :" Grid.Row="4" Grid.Column="1" FontFamily="Times New Roman" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="sommeNombre" Grid.Row="4" Grid.Column="2" VerticalAlignment="Center" FontFamily="Times New Roman" />
+        <Button x:Name="afficherSomme" Margin="5" Content="Calculer somme" Grid.Row="4" Grid.Column="4" FontFamily="Times New Roman" Click="afficherSomme_Click" />
+        <Label Content="La quantité de nombre :" Grid.Row="5" Grid.Column="1" FontFamily="Times New Roman" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="quantiteNombre" Grid.Row="5" Grid.Column="2" VerticalAlignment="Center" FontFamily="Times New Roman" />
+        <Button x:Name="afficherQuantite" Margin="5" Content="Afficher la quantité" Grid.Row="5" Grid.Column="4" FontFamily="Times New Roman" Click="afficherQuantite_Click" />
+        <Label Content="La moyenne des nombres :" Grid.Row="6" Grid.Column="1" FontFamily="Times New Roman" FontWeight="Bold" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Center" />
+        <TextBox x:Name="moyenneNombre" Grid.Row="6" Grid.Column="2" VerticalAlignment="Center" FontFamily="Times New Roman" />
+        <Button x:Name="afficherMoyenne" Margin="5" Content="Calculer moyenne" Grid.Row="6" Grid.Column="4" FontFamily="Times New Roman" Click="afficherMoyenne_Click" />
+    </Grid>
+</Window>

@@ -1,0 +1,757 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="LoanModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Audits">
+          <Key>
+            <PropertyRef Name="NoAudit" />
+          </Key>
+          <Property Name="NoAudit" Type="int" Nullable="false" />
+          <Property Name="DateChangement" Type="date" Nullable="false" />
+          <Property Name="ColChangement" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="AncienneValeur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NouvelleValeur" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="LocationChangement" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Clients">
+          <Key>
+            <PropertyRef Name="NoClient" />
+          </Key>
+          <Property Name="NoClient" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Prenom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nom" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Adresse" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Ville" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="Province" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="CodePostal" Type="char" MaxLength="7" Nullable="false" />
+          <Property Name="NumDeTelephone" Type="char" MaxLength="14" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Couleurs">
+          <Key>
+            <PropertyRef Name="Couleur" />
+          </Key>
+          <Property Name="Couleur" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="InfoPaiement">
+          <Key>
+            <PropertyRef Name="NoPaiement" />
+          </Key>
+          <Property Name="NoPaiement" Type="int" Nullable="false" />
+          <Property Name="NoLocation" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="Date" Type="date" Nullable="false" />
+          <Property Name="Montant" Type="money" Nullable="false" />
+          <Property Name="LocationPaiement" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Locations">
+          <Key>
+            <PropertyRef Name="NoLocation" />
+          </Key>
+          <Property Name="NoLocation" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="DateLocation" Type="date" Nullable="false" />
+          <Property Name="DatePaiement" Type="date" Nullable="false" />
+          <Property Name="MontantPaiement" Type="money" Nullable="false" />
+          <Property Name="NbrPaiement" Type="int" Nullable="false" />
+          <Property Name="VINVehicule" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="NoClient" Type="char" MaxLength="5" Nullable="false" />
+          <Property Name="TermesLocation" Type="varchar" MaxLength="255" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modeles">
+          <Key>
+            <PropertyRef Name="Modele" />
+          </Key>
+          <Property Name="Modele" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="TermesDeLocation">
+          <Key>
+            <PropertyRef Name="NoTerme" />
+          </Key>
+          <Property Name="NoTerme" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="NbrAnnees" Type="tinyint" Nullable="false" />
+          <Property Name="KiloMax" Type="int" Nullable="false" />
+          <Property Name="Prime" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Types">
+          <Key>
+            <PropertyRef Name="Type" />
+          </Key>
+          <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Vehicles">
+          <Key>
+            <PropertyRef Name="VINVehicule" />
+          </Key>
+          <Property Name="VINVehicule" Type="char" MaxLength="20" Nullable="false" />
+          <Property Name="Modele" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Type" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Couleur" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Annee" Type="int" Nullable="false" />
+          <Property Name="ValeurVehicule" Type="int" Nullable="false" />
+          <Property Name="TransmissionAuto" Type="tinyint" Nullable="false" />
+          <Property Name="AirClim" Type="tinyint" Nullable="false" />
+          <Property Name="AntiDemarreur" Type="tinyint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'MultiLocations1234.dbo.InfoPaiements' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="InfoPaiements">
+          <Property Name="NoPaiement" Type="int" />
+          <Property Name="NomComplet" Type="varchar" MaxLength="61" />
+          <Property Name="NumDeTelephone" Type="char" MaxLength="14" />
+          <Property Name="VINVehicule" Type="char" MaxLength="20" />
+          <Property Name="Modele" Type="varchar" MaxLength="30" />
+          <Property Name="Annee" Type="int" />
+          <Property Name="Montant" Type="money" />
+          <Property Name="Date" Type="date" />
+          <Property Name="LocationPaiement" Type="varchar" MaxLength="50" />
+        </EntityType>-->
+        <Association Name="FK_InfoPaiement_Locations">
+          <End Role="Locations" Type="Self.Locations" Multiplicity="1" />
+          <End Role="InfoPaiement" Type="Self.InfoPaiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="NoLocation" />
+            </Principal>
+            <Dependent Role="InfoPaiement">
+              <PropertyRef Name="NoLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Clients">
+          <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="NoClient" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="NoClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_TermesDeLocation">
+          <End Role="TermesDeLocation" Type="Self.TermesDeLocation" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TermesDeLocation">
+              <PropertyRef Name="NoTerme" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="TermesLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Locations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VINVehicule" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="VINVehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Couleurs">
+          <End Role="Couleurs" Type="Self.Couleurs" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couleurs">
+              <PropertyRef Name="Couleur" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Couleur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Modeles">
+          <End Role="Modeles" Type="Self.Modeles" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeles">
+              <PropertyRef Name="Modele" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Modele" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Types">
+          <End Role="Types" Type="Self.Types" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types">
+              <PropertyRef Name="Type" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CreateLeaseProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NoLocation" Type="char" Mode="In" />
+          <Parameter Name="DateLocation" Type="date" Mode="In" />
+          <Parameter Name="DatePaiement" Type="date" Mode="In" />
+          <Parameter Name="MontantPaiement" Type="money" Mode="In" />
+          <Parameter Name="NbrPaiement" Type="int" Mode="In" />
+          <Parameter Name="VINVehicule" Type="char" Mode="In" />
+          <Parameter Name="NoClient" Type="char" Mode="In" />
+          <Parameter Name="NbrAnnees" Type="tinyint" Mode="In" />
+          <Parameter Name="KiloMax" Type="int" Mode="In" />
+          <Parameter Name="Prime" Type="money" Mode="In" />
+        </Function>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="InsertPaiementsProcedure" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NoPaiement" Type="int" Mode="In" />
+          <Parameter Name="NoLocation" Type="char" Mode="In" />
+          <Parameter Name="Date" Type="date" Mode="In" />
+          <Parameter Name="Montant" Type="money" Mode="In" />
+          <Parameter Name="LocationPaiement" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="LoanModelStoreContainer">
+          <EntitySet Name="Audits" EntityType="Self.Audits" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Couleurs" EntityType="Self.Couleurs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="InfoPaiement" EntityType="Self.InfoPaiement" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Locations" EntityType="Self.Locations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modeles" EntityType="Self.Modeles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TermesDeLocation" EntityType="Self.TermesDeLocation" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Types" EntityType="Self.Types" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_InfoPaiement_Locations" Association="Self.FK_InfoPaiement_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="InfoPaiement" EntitySet="InfoPaiement" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Clients" Association="Self.FK_Locations_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_TermesDeLocation" Association="Self.FK_Locations_TermesDeLocation">
+            <End Role="TermesDeLocation" EntitySet="TermesDeLocation" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Vehicles" Association="Self.FK_Locations_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Couleurs" Association="Self.FK_Vehicles_Couleurs">
+            <End Role="Couleurs" EntitySet="Couleurs" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Modeles" Association="Self.FK_Vehicles_Modeles">
+            <End Role="Modeles" EntitySet="Modeles" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Types" Association="Self.FK_Vehicles_Types">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LoanModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="NoAudit" />
+          </Key>
+          <Property Name="NoAudit" Type="Int32" Nullable="false" />
+          <Property Name="DateChangement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ColChangement" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="AncienneValeur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NouvelleValeur" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="LocationChangement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="NoClient" />
+          </Key>
+          <Property Name="NoClient" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Prenom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nom" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Adresse" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Ville" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Province" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CodePostal" Type="String" MaxLength="7" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NumDeTelephone" Type="String" MaxLength="14" FixedLength="true" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Clients" FromRole="Clients" ToRole="Locations" />
+        </EntityType>
+        <EntityType Name="Couleur">
+          <Key>
+            <PropertyRef Name="Couleur1" />
+          </Key>
+          <Property Name="Couleur1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Couleurs" FromRole="Couleurs" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="InfoPaiement">
+          <Key>
+            <PropertyRef Name="NoPaiement" />
+          </Key>
+          <Property Name="NoPaiement" Type="Int32" Nullable="false" />
+          <Property Name="NoLocation" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="LocationPaiement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Location" Relationship="Self.FK_InfoPaiement_Locations" FromRole="InfoPaiement" ToRole="Locations" />
+        </EntityType>
+        <EntityType Name="Location">
+          <Key>
+            <PropertyRef Name="NoLocation" />
+          </Key>
+          <Property Name="NoLocation" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="DateLocation" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DatePaiement" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="MontantPaiement" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="NbrPaiement" Type="Int32" Nullable="false" />
+          <Property Name="VINVehicule" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="NoClient" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="TermesLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Client" Relationship="Self.FK_Locations_Clients" FromRole="Locations" ToRole="Clients" />
+          <NavigationProperty Name="InfoPaiements" Relationship="Self.FK_InfoPaiement_Locations" FromRole="Locations" ToRole="InfoPaiement" />
+          <NavigationProperty Name="TermesDeLocation" Relationship="Self.FK_Locations_TermesDeLocation" FromRole="Locations" ToRole="TermesDeLocation" />
+          <NavigationProperty Name="Vehicle" Relationship="Self.FK_Locations_Vehicles" FromRole="Locations" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Modele">
+          <Key>
+            <PropertyRef Name="Modele1" />
+          </Key>
+          <Property Name="Modele1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Modeles" FromRole="Modeles" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="TermesDeLocation">
+          <Key>
+            <PropertyRef Name="NoTerme" />
+          </Key>
+          <Property Name="NoTerme" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NbrAnnees" Type="Byte" Nullable="false" />
+          <Property Name="KiloMax" Type="Int32" Nullable="false" />
+          <Property Name="Prime" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_TermesDeLocation" FromRole="TermesDeLocation" ToRole="Locations" />
+        </EntityType>
+        <EntityType Name="Type">
+          <Key>
+            <PropertyRef Name="Type1" />
+          </Key>
+          <Property Name="Type1" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Vehicles" Relationship="Self.FK_Vehicles_Types" FromRole="Types" ToRole="Vehicles" />
+        </EntityType>
+        <EntityType Name="Vehicle">
+          <Key>
+            <PropertyRef Name="VINVehicule" />
+          </Key>
+          <Property Name="VINVehicule" Type="String" MaxLength="20" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="Modele" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Couleur" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Annee" Type="Int32" Nullable="false" />
+          <Property Name="ValeurVehicule" Type="Int32" Nullable="false" />
+          <Property Name="TransmissionAuto" Type="Byte" Nullable="false" />
+          <Property Name="AirClim" Type="Byte" Nullable="false" />
+          <Property Name="AntiDemarreur" Type="Byte" Nullable="false" />
+          <NavigationProperty Name="Couleur1" Relationship="Self.FK_Vehicles_Couleurs" FromRole="Vehicles" ToRole="Couleurs" />
+          <NavigationProperty Name="Locations" Relationship="Self.FK_Locations_Vehicles" FromRole="Vehicles" ToRole="Locations" />
+          <NavigationProperty Name="Modele1" Relationship="Self.FK_Vehicles_Modeles" FromRole="Vehicles" ToRole="Modeles" />
+          <NavigationProperty Name="Type1" Relationship="Self.FK_Vehicles_Types" FromRole="Vehicles" ToRole="Types" />
+        </EntityType>
+        <Association Name="FK_Locations_Clients">
+          <End Role="Clients" Type="Self.Client" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Clients">
+              <PropertyRef Name="NoClient" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="NoClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Couleurs">
+          <End Role="Couleurs" Type="Self.Couleur" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Couleurs">
+              <PropertyRef Name="Couleur1" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Couleur" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_InfoPaiement_Locations">
+          <End Role="Locations" Type="Self.Location" Multiplicity="1" />
+          <End Role="InfoPaiement" Type="Self.InfoPaiement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Locations">
+              <PropertyRef Name="NoLocation" />
+            </Principal>
+            <Dependent Role="InfoPaiement">
+              <PropertyRef Name="NoLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_TermesDeLocation">
+          <End Role="TermesDeLocation" Type="Self.TermesDeLocation" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TermesDeLocation">
+              <PropertyRef Name="NoTerme" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="TermesLocation" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Locations_Vehicles">
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="1" />
+          <End Role="Locations" Type="Self.Location" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Vehicles">
+              <PropertyRef Name="VINVehicule" />
+            </Principal>
+            <Dependent Role="Locations">
+              <PropertyRef Name="VINVehicule" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Modeles">
+          <End Role="Modeles" Type="Self.Modele" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modeles">
+              <PropertyRef Name="Modele1" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Modele" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Vehicles_Types">
+          <End Role="Types" Type="Self.Type" Multiplicity="1" />
+          <End Role="Vehicles" Type="Self.Vehicle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Types">
+              <PropertyRef Name="Type1" />
+            </Principal>
+            <Dependent Role="Vehicles">
+              <PropertyRef Name="Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LoanEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Audits" EntityType="Self.Audit" />
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Couleurs" EntityType="Self.Couleur" />
+          <EntitySet Name="InfoPaiements" EntityType="Self.InfoPaiement" />
+          <EntitySet Name="Locations" EntityType="Self.Location" />
+          <EntitySet Name="Modeles" EntityType="Self.Modele" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+          <EntitySet Name="TermesDeLocations" EntityType="Self.TermesDeLocation" />
+          <EntitySet Name="Types" EntityType="Self.Type" />
+          <EntitySet Name="Vehicles" EntityType="Self.Vehicle" />
+          <AssociationSet Name="FK_Locations_Clients" Association="Self.FK_Locations_Clients">
+            <End Role="Clients" EntitySet="Clients" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Couleurs" Association="Self.FK_Vehicles_Couleurs">
+            <End Role="Couleurs" EntitySet="Couleurs" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_InfoPaiement_Locations" Association="Self.FK_InfoPaiement_Locations">
+            <End Role="Locations" EntitySet="Locations" />
+            <End Role="InfoPaiement" EntitySet="InfoPaiements" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_TermesDeLocation" Association="Self.FK_Locations_TermesDeLocation">
+            <End Role="TermesDeLocation" EntitySet="TermesDeLocations" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Locations_Vehicles" Association="Self.FK_Locations_Vehicles">
+            <End Role="Vehicles" EntitySet="Vehicles" />
+            <End Role="Locations" EntitySet="Locations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Modeles" Association="Self.FK_Vehicles_Modeles">
+            <End Role="Modeles" EntitySet="Modeles" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Vehicles_Types" Association="Self.FK_Vehicles_Types">
+            <End Role="Types" EntitySet="Types" />
+            <End Role="Vehicles" EntitySet="Vehicles" />
+          </AssociationSet>
+          <FunctionImport Name="CreateLeaseProcedure">
+            <Parameter Name="NoLocation" Mode="In" Type="String" />
+            <Parameter Name="DateLocation" Mode="In" Type="DateTime" />
+            <Parameter Name="DatePaiement" Mode="In" Type="DateTime" />
+            <Parameter Name="MontantPaiement" Mode="In" Type="Decimal" />
+            <Parameter Name="NbrPaiement" Mode="In" Type="Int32" />
+            <Parameter Name="VINVehicule" Mode="In" Type="String" />
+            <Parameter Name="NoClient" Mode="In" Type="String" />
+            <Parameter Name="NbrAnnees" Mode="In" Type="Byte" />
+            <Parameter Name="KiloMax" Mode="In" Type="Int32" />
+            <Parameter Name="Prime" Mode="In" Type="Decimal" />
+          </FunctionImport>
+          <FunctionImport Name="InsertPaiementsProcedure">
+            <Parameter Name="NoPaiement" Mode="In" Type="Int32" />
+            <Parameter Name="NoLocation" Mode="In" Type="String" />
+            <Parameter Name="Date" Mode="In" Type="DateTime" />
+            <Parameter Name="Montant" Mode="In" Type="Decimal" />
+            <Parameter Name="LocationPaiement" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(LoanModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(LoanModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+        </EntityContainer>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LoanModelStoreContainer" CdmEntityContainer="LoanEntities">
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="LoanModel.Audit">
+              <MappingFragment StoreEntitySet="Audits">
+                <ScalarProperty Name="NoAudit" ColumnName="NoAudit" />
+                <ScalarProperty Name="DateChangement" ColumnName="DateChangement" />
+                <ScalarProperty Name="ColChangement" ColumnName="ColChangement" />
+                <ScalarProperty Name="AncienneValeur" ColumnName="AncienneValeur" />
+                <ScalarProperty Name="NouvelleValeur" ColumnName="NouvelleValeur" />
+                <ScalarProperty Name="LocationChangement" ColumnName="LocationChangement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="LoanModel.Client">
+              <MappingFragment StoreEntitySet="Clients">
+                <ScalarProperty Name="NoClient" ColumnName="NoClient" />
+                <ScalarProperty Name="Prenom" ColumnName="Prenom" />
+                <ScalarProperty Name="Nom" ColumnName="Nom" />
+                <ScalarProperty Name="Adresse" ColumnName="Adresse" />
+                <ScalarProperty Name="Ville" ColumnName="Ville" />
+                <ScalarProperty Name="Province" ColumnName="Province" />
+                <ScalarProperty Name="CodePostal" ColumnName="CodePostal" />
+                <ScalarProperty Name="NumDeTelephone" ColumnName="NumDeTelephone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Couleurs">
+            <EntityTypeMapping TypeName="LoanModel.Couleur">
+              <MappingFragment StoreEntitySet="Couleurs">
+                <ScalarProperty Name="Couleur1" ColumnName="Couleur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="InfoPaiements">
+            <EntityTypeMapping TypeName="LoanModel.InfoPaiement">
+              <MappingFragment StoreEntitySet="InfoPaiement">
+                <ScalarProperty Name="NoPaiement" ColumnName="NoPaiement" />
+                <ScalarProperty Name="NoLocation" ColumnName="NoLocation" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Montant" ColumnName="Montant" />
+                <ScalarProperty Name="LocationPaiement" ColumnName="LocationPaiement" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Locations">
+            <EntityTypeMapping TypeName="LoanModel.Location">
+              <MappingFragment StoreEntitySet="Locations">
+                <ScalarProperty Name="NoLocation" ColumnName="NoLocation" />
+                <ScalarProperty Name="DateLocation" ColumnName="DateLocation" />
+                <ScalarProperty Name="DatePaiement" ColumnName="DatePaiement" />
+                <ScalarProperty Name="MontantPaiement" ColumnName="MontantPaiement" />
+                <ScalarProperty Name="NbrPaiement" ColumnName="NbrPaiement" />
+                <ScalarProperty Name="VINVehicule" ColumnName="VINVehicule" />
+                <ScalarProperty Name="NoClient" ColumnName="NoClient" />
+                <ScalarProperty Name="TermesLocation" ColumnName="TermesLocation" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modeles">
+            <EntityTypeMapping TypeName="LoanModel.Modele">
+              <MappingFragment StoreEntitySet="Modeles">
+                <ScalarProperty Name="Modele1" ColumnName="Modele" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="LoanModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TermesDeLocations">
+            <EntityTypeMapping TypeName="LoanModel.TermesDeLocation">
+              <MappingFragment StoreEntitySet="TermesDeLocation">
+                <ScalarProperty Name="NoTerme" ColumnName="NoTerme" />
+                <ScalarProperty Name="NbrAnnees" ColumnName="NbrAnnees" />
+                <ScalarProperty Name="KiloMax" ColumnName="KiloMax" />
+                <ScalarProperty Name="Prime" ColumnName="Prime" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Types">
+            <EntityTypeMapping TypeName="LoanModel.Type">
+              <MappingFragment StoreEntitySet="Types">
+                <ScalarProperty Name="Type1" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Vehicles">
+            <EntityTypeMapping TypeName="LoanModel.Vehicle">
+              <MappingFragment StoreEntitySet="Vehicles">
+                <ScalarProperty Name="VINVehicule" ColumnName="VINVehicule" />
+                <ScalarProperty Name="Modele" ColumnName="Modele" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Couleur" ColumnName="Couleur" />
+                <ScalarProperty Name="Annee" ColumnName="Annee" />
+                <ScalarProperty Name="ValeurVehicule" ColumnName="ValeurVehicule" />
+                <ScalarProperty Name="TransmissionAuto" ColumnName="TransmissionAuto" />
+                <ScalarProperty Name="AirClim" ColumnName="AirClim" />
+                <ScalarProperty Name="AntiDemarreur" ColumnName="AntiDemarreur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="CreateLeaseProcedure" FunctionName="LoanModel.Store.CreateLeaseProcedure" />
+          <FunctionImportMapping FunctionImportName="InsertPaiementsProcedure" FunctionName="LoanModel.Store.InsertPaiementsProcedure" />
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="LoanModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="LoanModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="LoanModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="LoanModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LoanModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="LoanModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LoanModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="LoanModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="LoanModel.Store.sp_upgraddiagrams" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -22,6 +22,9 @@ public class Controller implements Initializable {
     @FXML
     public RadioButton twentyPercentTax;
     @FXML
+    public Button btnCalculer;
+
+    @FXML
     public void calculerPourboire (ActionEvent event){
         try {
             Calcul multiply = (double a, double b) -> a * b;

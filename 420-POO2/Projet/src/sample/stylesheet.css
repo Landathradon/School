@@ -1,0 +1,23 @@
+.labelInfo{
+    -fx-border-color: grey;
+    -fx-border-width: 1px;
+    -fx-font-size: 20px;
+    -fx-min-width: 90%;
+}
+.labelTitles{
+    -fx-font-size: 20px;
+}
+
+.button{
+    -fx-background-color: linear-gradient(to bottom, #E8EFF7, #C1D2E5);
+    -fx-padding: 1px 15px;
+    -fx-border-color: #9AA8B7;
+}
+.hangBase{
+    -fx-fill: #c95600;
+    -fx-stroke: #c95600;
+}
+.letterBtn{
+    -fx-pref-width: 45px;
+    -fx-pref-height: 25px;
+}

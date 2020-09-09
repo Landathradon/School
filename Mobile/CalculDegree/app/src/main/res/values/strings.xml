@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">CalculDegree</string>
+    <string name="convertir">Convertir</string>
+    <string name="celsius">°Celsius</string>
+    <string name="f">°F</string>
+    <string name="c">°C</string>
+</resources>

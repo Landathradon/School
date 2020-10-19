@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">RecyclerView Row Selection</string>
+    <string name="textview">TextView</string>
+</resources>

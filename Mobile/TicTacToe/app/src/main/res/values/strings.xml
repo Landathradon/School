@@ -12,4 +12,22 @@
     <string name="player">Player</string>
     <string name="plus">+</string>
     <string name="restart_game">Restart Game</string>
+    <string name="xxxxx">xxxxx</string>
+    <string name="yyyyy">yyyyy</string>
+    <string name="_1">1</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="login_message">You can select any users from the list\nAnd any icons if you click on them</string>
+    <string name="_11">11</string>
+    <string name="_10">10</string>
+    <string name="_9">9</string>
+    <string name="_8">8</string>
+    <string name="_7">7</string>
+    <string name="_6">6</string>
+    <string name="_5">5</string>
+    <string name="_4">4</string>
+    <string name="return_str">Return</string>
+    <string name="player1_img">player1_img</string>
+    <string name="player2_img">player2_img</string>
+    <string name="turn_player">Turn: %1$s</string>
 </resources>

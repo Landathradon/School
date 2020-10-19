@@ -5,21 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3949AB"
+    android:saveEnabled="true"
     tools:context=".MainActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
         android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:baselineAligned="false">
 
             <LinearLayout
                 android:layout_width="wrap_content"
@@ -104,11 +104,38 @@
             android:layout_height="15dp"
             android:background="@android:color/black" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/divider2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/tv_player_turn"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/turn_player"
+                android:textColor="#7CB342"
+                android:textSize="24sp" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+        </LinearLayout>
+
         <TableLayout
             android:id="@+id/tablelayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="175dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="100dp"
             android:background="@android:color/black">
 
             <TableRow
@@ -121,7 +148,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
 
@@ -137,7 +166,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
 
@@ -153,7 +184,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
             </TableRow>
@@ -169,7 +202,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
 
@@ -185,7 +220,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
 
@@ -201,7 +238,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
             </TableRow>
@@ -217,7 +256,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
 
@@ -233,7 +274,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
 
@@ -249,7 +292,9 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@android:color/holo_blue_light"
+                    android:drawablePadding="-84px"
                     android:onClick="selectCase"
+                    android:paddingVertical="20dp"
                     android:text="@string/plus"
                     android:textSize="30sp" />
             </TableRow>
@@ -261,11 +306,12 @@
         android:id="@+id/btn_restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="45dp"
         android:onClick="restartGame"
         android:text="@string/restart_game"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

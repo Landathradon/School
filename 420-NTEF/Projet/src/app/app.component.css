@@ -1,0 +1,9 @@
+h1{
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 25px;
+}
+body {
+  background-color: rgb(26, 29, 30);
+  color: deepskyblue;
+}

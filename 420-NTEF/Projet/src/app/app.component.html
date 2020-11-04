@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>{{ title }}</h1>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let die of Dices">
+      <img [src]="die.getImageSrc()" alt="">
+    </div>
+  </div>
+  <div class="row text-center">
+    <p class="col-md-4">Pointage: {{ points }}</p>
+    <p class="col-md-4">Bonus: {{ bonus }}</p>
+    <p class="col-md-4">Total des points: {{ totalPoints }}</p>
+  </div>
+  <div class="row">
+    <p class="col-md-12 text-center">Cumulatif des points: {{ totalPointsCumulated }}</p>
+    <div id="buttons" class="btn-group-vertical mx-auto">
+      <button (click)="replay()">Jouer à nouveau</button>
+      <button (click)="totalPointsCumulated = 0">Réinitialiser pointage</button>
+    </div>
+  </div>
+</div>

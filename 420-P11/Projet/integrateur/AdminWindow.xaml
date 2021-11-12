@@ -1,0 +1,36 @@
+﻿<Window x:Name="Admin_Window" x:Class="integrateur.AdminWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:integrateur"
+        mc:Ignorable="d"
+        Title="Administrateur" Height="300" Width="790">
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="160" Margin="21,41,0,0" VerticalAlignment="Top" Width="219">
+            <Label Content="Clients" Width="200" HorizontalContentAlignment="Center"/>
+            <Separator Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Width="200"/>
+            <Button x:Name="Btn_CreeClient" Content="Crée un client" Width="200" Click="Btn_CreeClient_Click"/>
+            <Button x:Name="Btn_CreeCompte" Content="Crée un compte" Width="200" Click="Btn_CreeCompte_Click"/>
+            <Button x:Name="Btn_Transaction" Content="Afficher transaction par compte" Width="200" Click="Btn_Transaction_Click"/>
+            <Button x:Name="Btn_GererAcces" Content="Gérer l'accès du compte client" Width="200" Click="Btn_GererAcces_Click"/>
+        </Menu>
+        <Menu HorizontalAlignment="Left" Height="160" Margin="281,41,0,0" VerticalAlignment="Top" Width="220">
+            <Label Content="Changements sensibles" Width="200" HorizontalContentAlignment="Center"/>
+            <Separator Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Width="200"/>
+            <Button x:Name="Btn_interet" Content="Payer l'intérêt" Width="200" Click="Btn_interet_Click"/>
+            <Button x:Name="Btn_prendreMontant" Content="Prélever un montant" Width="200" Click="Btn_prendreMontant_Click"/>
+            <Button x:Name="Btn_augmSoldeMarge" Content="Augmenter solde marge de crédit" Width="200" Click="Btn_augmSoldeMarge_Click"/>
+        </Menu>
+        <Menu HorizontalAlignment="Left" Height="160" Margin="541,41,0,0" VerticalAlignment="Top" Width="220">
+            <Label Content="Paramètres" Width="200" HorizontalContentAlignment="Center"/>
+            <Separator Background="{DynamicResource {x:Static SystemColors.ActiveCaptionTextBrushKey}}" Width="200"/>
+            <Button x:Name="Btn_ajoutArgentGuichet" Content="Ajouter de l'argent au guichet" Width="200" Click="Btn_ajoutArgentGuichet_Click"/>
+            <Button x:Name="Btn_fermerGuichet" Content="Fermer le guichet" Width="200" Click="Btn_fermerGuichet_Click"/>
+        </Menu>
+
+
+
+
+    </Grid>
+</Window>

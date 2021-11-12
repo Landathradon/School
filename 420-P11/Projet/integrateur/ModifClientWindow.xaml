@@ -1,0 +1,71 @@
+﻿<Window x:Class="integrateur.ModifClientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:integrateur"
+        mc:Ignorable="d"
+        Title="Modifier le client" Height="450" Width="900">
+    <Grid>
+        <Label x:Name="Lab_ModifClient" Content="" HorizontalAlignment="Left" Height="25" Margin="40,0,0,0" VerticalAlignment="Top" Width="160" HorizontalContentAlignment="Center"/>
+        <Label Content="Historique" HorizontalAlignment="Left" Margin="520,3,0,0" VerticalAlignment="Top" Width="159" Height="26" FontWeight="Bold"/>
+
+        <Grid x:Name="Grid_client">
+            <Label Content="Code client" HorizontalAlignment="Left" Margin="40,33,0,0" VerticalAlignment="Top" Width="80"/>
+            <TextBox x:Name="TxBox_Code" HorizontalAlignment="Left" Height="23" Margin="120,34,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Prénom" HorizontalAlignment="Left" Margin="40,69,0,0" VerticalAlignment="Top" Width="80"/>
+            <TextBox x:Name="TxBox_Prenom" HorizontalAlignment="Left" Height="23" Margin="120,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Nom" HorizontalAlignment="Left" Margin="40,104,0,0" VerticalAlignment="Top" Width="80"/>
+            <TextBox x:Name="TxBox_Nom" HorizontalAlignment="Left" Height="23" Margin="120,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Téléphone" HorizontalAlignment="Left" Margin="40,140,0,0" VerticalAlignment="Top" Width="80"/>
+            <TextBox x:Name="TxBox_Telephone" HorizontalAlignment="Left" Height="23" Margin="120,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="Courriel" HorizontalAlignment="Left" Margin="40,171,0,0" VerticalAlignment="Top" Width="80"/>
+            <TextBox x:Name="TxBox_Courriel" HorizontalAlignment="Left" Height="23" Margin="120,171,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+            <Label Content="NIP" HorizontalAlignment="Left" Margin="40,199,0,0" VerticalAlignment="Top" Width="80"/>
+            <TextBox x:Name="TxBox_NIP" HorizontalAlignment="Left" Height="23" Margin="120,199,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" MaxLength="4"/>
+        </Grid>
+
+        <CheckBox x:Name="Chk_actif" Content="Compte actif" HorizontalAlignment="Left" Margin="45,229,0,0" VerticalAlignment="Top" Width="159" IsChecked="True"/>
+
+        <Grid x:Name="Grid_compte" HorizontalAlignment="Left" Height="115" Margin="42,249,0,0" VerticalAlignment="Top" Width="198">
+            <Button x:Name="Btn_compteCheque" Content="Ajout" Width="38" Height="26" Margin="0,0,160,74" Click="AjoutCompte_OnClick"/>
+            <Label Content="Compte chèque" Height="26" Margin="43,8,10,81"/>
+            <Button x:Name="Btn_compteEpargne" Content="Ajout" Width="38" Height="26" Margin="0,34,160,55" Click="AjoutCompte_OnClick"/>
+            <Label Content="Compte épargne" Height="26" Margin="43,34,10,55"/>
+            <Button x:Name="Btn_compteHypothecaire" Content="Ajout" Width="38" Height="26" Margin="0,60,160,29" Click="AjoutCompte_OnClick"/>
+            <Label Content="Compte hypothécaire&#xD;&#xA;" Height="26" Margin="43,60,10,29"/>
+            <Button x:Name="Btn_compteMargeCredit" Content="Ajout" Width="38" Height="26" Margin="0,86,160,3" Click="AjoutCompte_OnClick"/>
+            <Label Content="Compte marge de crédit" Height="26" Margin="43,86,10,3"/>
+
+        </Grid>
+
+        <Button x:Name="Btn_Cree" Content="Crée client" HorizontalAlignment="Left" Margin="39,369,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="Btn_Cree_OnClick"/>
+        <Button x:Name="Btn_Modif" Content="Modifier client" HorizontalAlignment="Left" Margin="180,369,0,0" VerticalAlignment="Top" Width="120" Height="40" Click="Btn_Modif_OnClick"/>
+
+        <Grid x:Name="Grid_Histo" HorizontalAlignment="Left" Height="367" Margin="403,34,0,0" VerticalAlignment="Top" Width="450">
+            <Menu DockPanel.Dock="Top" Margin="0,0,0,347">
+                <MenuItem x:Name="mnu_cheque" Header="Chèque" Click="mnu_cheque_Click"/>
+                <MenuItem x:Name="mnu_epargne" Header="Épargne" Click="mnu_epargne_Click"/>
+                <MenuItem x:Name="mnu_hypothecaire" Header="Hypothécaire" Click="mnu_hypothecaire_Click"/>
+                <MenuItem x:Name="mnu_margeCredit" Header="Marge de crédit" Click="mnu_margeCredit_Click"/>
+            </Menu>
+            <ListView x:Name="Lv_historique" HorizontalAlignment="Left" Height="342" Margin="0,25,0,0" VerticalAlignment="Top" Width="450">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="{Binding showHistorique}"></TextBlock>
+                            <TextBlock Text="{Binding showDate}"></TextBlock>
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+        <Grid x:Name="Grid_SelectedUser" HorizontalAlignment="Left" Height="50" Margin="262,37,0,0" VerticalAlignment="Top" Width="120">
+            <Label Content="Utilisateur" Width="118" HorizontalContentAlignment="Center"/>
+            <ComboBox x:Name="Cmb_UserList" Width="120" IsSynchronizedWithCurrentItem="True" ItemsSource="{Binding}" DisplayMemberPath="nom_complet" SelectionChanged="Cmb_UserList_OnChange" Margin="0,24,0,0"/>
+
+        </Grid>
+
+    </Grid>
+</Window>

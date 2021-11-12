@@ -1,0 +1,472 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="BanqueModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="clients">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="nom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="prenom" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="telephone" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="courriel" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="nip" Type="int" Nullable="false" />
+          <Property Name="compte_actif" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="historique_transaction">
+          <Key>
+            <PropertyRef Name="id_transaction" />
+          </Key>
+          <Property Name="id_transaction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="code_client_envoi" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="compte_client_envoi" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="code_client_recus" Type="varchar" MaxLength="20" />
+          <Property Name="compte_client_recus" Type="varchar" MaxLength="20" />
+          <Property Name="montant" Type="money" Nullable="false" />
+          <Property Name="date" Type="date" Nullable="false" />
+          <Property Name="idtype_transaction" Type="int" Nullable="false" />
+          <Property Name="no_paiement" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="parametres">
+          <Key>
+            <PropertyRef Name="id_param" />
+          </Key>
+          <Property Name="id_param" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="valeur" Type="varchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="solde_clients">
+          <Key>
+            <PropertyRef Name="compte_client" />
+          </Key>
+          <Property Name="compte_client" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="code_client" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="idtype_compte" Type="int" Nullable="false" />
+          <Property Name="solde" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_compte">
+          <Key>
+            <PropertyRef Name="idtype_compte" />
+          </Key>
+          <Property Name="idtype_compte" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="type_transaction">
+          <Key>
+            <PropertyRef Name="idtype_transaction" />
+          </Key>
+          <Property Name="idtype_transaction" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="description" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_historique_transaction_clients">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="code_client_envoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_transaction_clients1">
+          <End Role="clients" Type="Self.clients" Multiplicity="0..1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="code_client_recus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_transaction_solde_clients">
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="solde_clients">
+              <PropertyRef Name="compte_client" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="compte_client_envoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_transaction_solde_clients1">
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="0..1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="solde_clients">
+              <PropertyRef Name="compte_client" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="compte_client_recus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_transaction_type_transaction">
+          <End Role="type_transaction" Type="Self.type_transaction" Multiplicity="1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_transaction">
+              <PropertyRef Name="idtype_transaction" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="idtype_transaction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solde_clients_clients">
+          <End Role="clients" Type="Self.clients" Multiplicity="1" />
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="solde_clients">
+              <PropertyRef Name="code_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solde_clients_type_compte">
+          <End Role="type_compte" Type="Self.type_compte" Multiplicity="1" />
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_compte">
+              <PropertyRef Name="idtype_compte" />
+            </Principal>
+            <Dependent Role="solde_clients">
+              <PropertyRef Name="idtype_compte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanqueModelStoreContainer">
+          <EntitySet Name="clients" EntityType="Self.clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="historique_transaction" EntityType="Self.historique_transaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="parametres" EntityType="Self.parametres" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="solde_clients" EntityType="Self.solde_clients" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_compte" EntityType="Self.type_compte" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type_transaction" EntityType="Self.type_transaction" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_historique_transaction_clients" Association="Self.FK_historique_transaction_clients">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_clients1" Association="Self.FK_historique_transaction_clients1">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_solde_clients" Association="Self.FK_historique_transaction_solde_clients">
+            <End Role="solde_clients" EntitySet="solde_clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_solde_clients1" Association="Self.FK_historique_transaction_solde_clients1">
+            <End Role="solde_clients" EntitySet="solde_clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_type_transaction" Association="Self.FK_historique_transaction_type_transaction">
+            <End Role="type_transaction" EntitySet="type_transaction" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solde_clients_clients" Association="Self.FK_solde_clients_clients">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="solde_clients" EntitySet="solde_clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solde_clients_type_compte" Association="Self.FK_solde_clients_type_compte">
+            <End Role="type_compte" EntitySet="type_compte" />
+            <End Role="solde_clients" EntitySet="solde_clients" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="BanqueModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="client">
+          <Key>
+            <PropertyRef Name="code" />
+          </Key>
+          <Property Name="code" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="prenom" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="courriel" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="nip" Type="Int32" Nullable="false" />
+          <Property Name="compte_actif" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="historique_transaction" Relationship="Self.FK_historique_transaction_clients" FromRole="clients" ToRole="historique_transaction" />
+          <NavigationProperty Name="historique_transaction1" Relationship="Self.FK_historique_transaction_clients1" FromRole="clients" ToRole="historique_transaction" />
+          <NavigationProperty Name="solde_clients" Relationship="Self.FK_solde_clients_clients" FromRole="clients" ToRole="solde_clients" />
+        </EntityType>
+        <EntityType Name="historique_transaction">
+          <Key>
+            <PropertyRef Name="id_transaction" />
+          </Key>
+          <Property Name="id_transaction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="code_client_envoi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="compte_client_envoi" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code_client_recus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="compte_client_recus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="montant" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="idtype_transaction" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="client" Relationship="Self.FK_historique_transaction_clients" FromRole="historique_transaction" ToRole="clients" />
+          <NavigationProperty Name="client1" Relationship="Self.FK_historique_transaction_clients1" FromRole="historique_transaction" ToRole="clients" />
+          <NavigationProperty Name="solde_clients" Relationship="Self.FK_historique_transaction_solde_clients" FromRole="historique_transaction" ToRole="solde_clients" />
+          <NavigationProperty Name="solde_clients1" Relationship="Self.FK_historique_transaction_solde_clients1" FromRole="historique_transaction" ToRole="solde_clients" />
+          <NavigationProperty Name="type_transaction" Relationship="BanqueModel.FK_historique_transaction_type_transaction" FromRole="historique_transaction" ToRole="type_transaction" />
+          <Property Name="no_paiement" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="parametre">
+          <Key>
+            <PropertyRef Name="id_param" />
+          </Key>
+          <Property Name="id_param" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="valeur" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="solde_clients">
+          <Key>
+            <PropertyRef Name="compte_client" />
+          </Key>
+          <Property Name="compte_client" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="code_client" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="idtype_compte" Type="Int32" Nullable="false" />
+          <Property Name="solde" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="client" Relationship="Self.FK_solde_clients_clients" FromRole="solde_clients" ToRole="clients" />
+          <NavigationProperty Name="historique_transaction" Relationship="Self.FK_historique_transaction_solde_clients" FromRole="solde_clients" ToRole="historique_transaction" />
+          <NavigationProperty Name="historique_transaction1" Relationship="Self.FK_historique_transaction_solde_clients1" FromRole="solde_clients" ToRole="historique_transaction" />
+          <NavigationProperty Name="type_compte" Relationship="Self.FK_solde_clients_type_compte" FromRole="solde_clients" ToRole="type_compte" />
+        </EntityType>
+        <EntityType Name="type_compte">
+          <Key>
+            <PropertyRef Name="idtype_compte" />
+          </Key>
+          <Property Name="idtype_compte" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="solde_clients" Relationship="Self.FK_solde_clients_type_compte" FromRole="type_compte" ToRole="solde_clients" />
+        </EntityType>
+        <EntityType Name="type_transaction">
+          <Key>
+            <PropertyRef Name="idtype_transaction" />
+          </Key>
+          <Property Name="idtype_transaction" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="description" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="historique_transaction" Relationship="BanqueModel.FK_historique_transaction_type_transaction" FromRole="type_transaction" ToRole="historique_transaction" />
+        </EntityType>
+        <Association Name="FK_historique_transaction_clients">
+          <End Role="clients" Type="Self.client" Multiplicity="1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="code_client_envoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_transaction_clients1">
+          <End Role="clients" Type="Self.client" Multiplicity="0..1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="code_client_recus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solde_clients_clients">
+          <End Role="clients" Type="Self.client" Multiplicity="1" />
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="clients">
+              <PropertyRef Name="code" />
+            </Principal>
+            <Dependent Role="solde_clients">
+              <PropertyRef Name="code_client" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_transaction_solde_clients">
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="solde_clients">
+              <PropertyRef Name="compte_client" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="compte_client_envoi" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_historique_transaction_solde_clients1">
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="0..1" />
+          <End Role="historique_transaction" Type="Self.historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="solde_clients">
+              <PropertyRef Name="compte_client" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="compte_client_recus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_solde_clients_type_compte">
+          <End Role="type_compte" Type="Self.type_compte" Multiplicity="1" />
+          <End Role="solde_clients" Type="Self.solde_clients" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_compte">
+              <PropertyRef Name="idtype_compte" />
+            </Principal>
+            <Dependent Role="solde_clients">
+              <PropertyRef Name="idtype_compte" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="BanqueEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="clients" EntityType="Self.client" />
+          <EntitySet Name="historique_transaction" EntityType="Self.historique_transaction" />
+          <EntitySet Name="parametres" EntityType="Self.parametre" />
+          <EntitySet Name="solde_clients" EntityType="Self.solde_clients" />
+          <EntitySet Name="type_compte" EntityType="Self.type_compte" />
+          <EntitySet Name="type_transaction" EntityType="Self.type_transaction" />
+          <AssociationSet Name="FK_historique_transaction_clients" Association="Self.FK_historique_transaction_clients">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_clients1" Association="Self.FK_historique_transaction_clients1">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solde_clients_clients" Association="Self.FK_solde_clients_clients">
+            <End Role="clients" EntitySet="clients" />
+            <End Role="solde_clients" EntitySet="solde_clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_solde_clients" Association="Self.FK_historique_transaction_solde_clients">
+            <End Role="solde_clients" EntitySet="solde_clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_solde_clients1" Association="Self.FK_historique_transaction_solde_clients1">
+            <End Role="solde_clients" EntitySet="solde_clients" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_solde_clients_type_compte" Association="Self.FK_solde_clients_type_compte">
+            <End Role="type_compte" EntitySet="type_compte" />
+            <End Role="solde_clients" EntitySet="solde_clients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_historique_transaction_type_transaction" Association="BanqueModel.FK_historique_transaction_type_transaction">
+            <End Role="type_transaction" EntitySet="type_transaction" />
+            <End Role="historique_transaction" EntitySet="historique_transaction" />
+          </AssociationSet>
+        </EntityContainer>
+        <Association Name="FK_historique_transaction_type_transaction">
+          <End Type="BanqueModel.type_transaction" Role="type_transaction" Multiplicity="1" />
+          <End Type="BanqueModel.historique_transaction" Role="historique_transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type_transaction">
+              <PropertyRef Name="idtype_transaction" />
+            </Principal>
+            <Dependent Role="historique_transaction">
+              <PropertyRef Name="idtype_transaction" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="BanqueModelStoreContainer" CdmEntityContainer="BanqueEntities">
+          <EntitySetMapping Name="clients">
+            <EntityTypeMapping TypeName="BanqueModel.client">
+              <MappingFragment StoreEntitySet="clients">
+                <ScalarProperty Name="code" ColumnName="code" />
+                <ScalarProperty Name="nom" ColumnName="nom" />
+                <ScalarProperty Name="prenom" ColumnName="prenom" />
+                <ScalarProperty Name="telephone" ColumnName="telephone" />
+                <ScalarProperty Name="courriel" ColumnName="courriel" />
+                <ScalarProperty Name="nip" ColumnName="nip" />
+                <ScalarProperty Name="compte_actif" ColumnName="compte_actif" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="historique_transaction">
+            <EntityTypeMapping TypeName="BanqueModel.historique_transaction">
+              <MappingFragment StoreEntitySet="historique_transaction">
+                <ScalarProperty Name="no_paiement" ColumnName="no_paiement" />
+                <ScalarProperty Name="id_transaction" ColumnName="id_transaction" />
+                <ScalarProperty Name="code_client_envoi" ColumnName="code_client_envoi" />
+                <ScalarProperty Name="compte_client_envoi" ColumnName="compte_client_envoi" />
+                <ScalarProperty Name="code_client_recus" ColumnName="code_client_recus" />
+                <ScalarProperty Name="compte_client_recus" ColumnName="compte_client_recus" />
+                <ScalarProperty Name="montant" ColumnName="montant" />
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="idtype_transaction" ColumnName="idtype_transaction" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="parametres">
+            <EntityTypeMapping TypeName="BanqueModel.parametre">
+              <MappingFragment StoreEntitySet="parametres">
+                <ScalarProperty Name="id_param" ColumnName="id_param" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="valeur" ColumnName="valeur" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="solde_clients">
+            <EntityTypeMapping TypeName="BanqueModel.solde_clients">
+              <MappingFragment StoreEntitySet="solde_clients">
+                <ScalarProperty Name="compte_client" ColumnName="compte_client" />
+                <ScalarProperty Name="code_client" ColumnName="code_client" />
+                <ScalarProperty Name="idtype_compte" ColumnName="idtype_compte" />
+                <ScalarProperty Name="solde" ColumnName="solde" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_compte">
+            <EntityTypeMapping TypeName="BanqueModel.type_compte">
+              <MappingFragment StoreEntitySet="type_compte">
+                <ScalarProperty Name="idtype_compte" ColumnName="idtype_compte" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type_transaction">
+            <EntityTypeMapping TypeName="BanqueModel.type_transaction">
+              <MappingFragment StoreEntitySet="type_transaction">
+                <ScalarProperty Name="idtype_transaction" ColumnName="idtype_transaction" />
+                <ScalarProperty Name="description" ColumnName="description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Projet AWS</title>
+    <style type="text/css">
+
+        form, label, input{
+            display: block;
+            margin: 5px 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <form method="get" action="https://vb0zgjamwi.execute-api.us-east-2.amazonaws.com/default/CalculNoteExam">
+        <label for="CodeEtudiant">Code Étudiant</label>
+        <input id="CodeEtudiant" name="CodeEtudiant" type="text">
+
+        <label for="NoteIntra">Note examen intra</label>
+        <input id="NoteIntra" name="NoteIntra" type="number">
+
+        <label for="NoteFinal">Note examen final</label>
+        <input id="NoteFinal" name="NoteFinal" type="number">
+
+        <input type="submit" value="Envoyer">
+    </form>
+</body>
+
+</html>

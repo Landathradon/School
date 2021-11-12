@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BanqueModelStoreContainer" CdmEntityContainer="BanqueEntities">
+    <EntitySetMapping Name="clients">
+      <EntityTypeMapping TypeName="BanqueModel.client">
+        <MappingFragment StoreEntitySet="clients">
+          <ScalarProperty Name="code" ColumnName="code" />
+          <ScalarProperty Name="nom" ColumnName="nom" />
+          <ScalarProperty Name="prenom" ColumnName="prenom" />
+          <ScalarProperty Name="telephone" ColumnName="telephone" />
+          <ScalarProperty Name="courriel" ColumnName="courriel" />
+          <ScalarProperty Name="nip" ColumnName="nip" />
+          <ScalarProperty Name="compte_actif" ColumnName="compte_actif" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="historique_transaction">
+      <EntityTypeMapping TypeName="BanqueModel.historique_transaction">
+        <MappingFragment StoreEntitySet="historique_transaction">
+          <ScalarProperty Name="no_paiement" ColumnName="no_paiement" />
+          <ScalarProperty Name="id_transaction" ColumnName="id_transaction" />
+          <ScalarProperty Name="code_client_envoi" ColumnName="code_client_envoi" />
+          <ScalarProperty Name="compte_client_envoi" ColumnName="compte_client_envoi" />
+          <ScalarProperty Name="code_client_recus" ColumnName="code_client_recus" />
+          <ScalarProperty Name="compte_client_recus" ColumnName="compte_client_recus" />
+          <ScalarProperty Name="montant" ColumnName="montant" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="idtype_transaction" ColumnName="idtype_transaction" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="parametres">
+      <EntityTypeMapping TypeName="BanqueModel.parametre">
+        <MappingFragment StoreEntitySet="parametres">
+          <ScalarProperty Name="id_param" ColumnName="id_param" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="valeur" ColumnName="valeur" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="solde_clients">
+      <EntityTypeMapping TypeName="BanqueModel.solde_clients">
+        <MappingFragment StoreEntitySet="solde_clients">
+          <ScalarProperty Name="compte_client" ColumnName="compte_client" />
+          <ScalarProperty Name="code_client" ColumnName="code_client" />
+          <ScalarProperty Name="idtype_compte" ColumnName="idtype_compte" />
+          <ScalarProperty Name="solde" ColumnName="solde" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_compte">
+      <EntityTypeMapping TypeName="BanqueModel.type_compte">
+        <MappingFragment StoreEntitySet="type_compte">
+          <ScalarProperty Name="idtype_compte" ColumnName="idtype_compte" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="type_transaction">
+      <EntityTypeMapping TypeName="BanqueModel.type_transaction">
+        <MappingFragment StoreEntitySet="type_transaction">
+          <ScalarProperty Name="idtype_transaction" ColumnName="idtype_transaction" />
+          <ScalarProperty Name="description" ColumnName="description" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

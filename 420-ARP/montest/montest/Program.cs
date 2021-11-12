@@ -6,7 +6,7 @@ namespace montest
 {
     internal class Program
     {
-        /*public static void Main(string[] args)
+        public static void Main(string[] args)
         {
             int nbrUtilisateurs = 0;
             Console.WriteLine("Veuillez entrer le nombre d'utilisateurs à inscrire:");
@@ -102,6 +102,6 @@ namespace montest
 
                 return userInfo;
             }
-        }*/
+        }
     }
 }
